@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Bí mật / cấu hình cá nhân
+.env
+*.key
+.claude/settings.local.json
+
+# Dữ liệu: không commit dữ liệu thô, BCTC PDF hay Snapshot (bản quyền nguồn dữ liệu — kehoach.md mục 5.1)
+data/raw/*
+data/snapshots/*
+data/pilot/*
+!data/**/.gitkeep
+!data/README.md
+
+# Benchmark: TẬP TEST CHÍNH + GOLD TEST LÀ NIÊM PHONG — chỉ TV4/TV5 giữ, không bao giờ đưa lên repo
+benchmark/test/
+benchmark/test_*/
+benchmark/gold/
+benchmark/**/*test*gold*
+benchmark/**/*sealed*
+
+# Log chạy LLM (có thể chứa câu hỏi tập Test)
+runs/
+logs/
