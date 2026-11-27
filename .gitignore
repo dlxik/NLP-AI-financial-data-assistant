@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Raw third-party data & original PDFs (kept locally per data licensing policy)
+data/raw_pdfs/*.pdf
+data/raw_pdfs/*/*.pdf
+data/snapshots/
+*.parquet
