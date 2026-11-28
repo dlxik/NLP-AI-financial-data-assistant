@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fin-assistant"
+version = "0.1.0"
+description = "AI Financial Data Assistant — hỏi đáp số liệu BCTC nhóm VN30 bằng tiếng Việt (semantic layer, pipeline LLM, bộ chấm)."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+addopts = "-q"
+
+[tool.coverage.run]
+branch = true
+source = ["fin_assistant.semantic", "fin_assistant.b0"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 95
