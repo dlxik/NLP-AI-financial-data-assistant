@@ -1,5 +1,21 @@
+# Python build and test artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Local data and generated snapshots
 tmp/
+data/raw/
+data/raw_pdfs/
+data/snapshots/
+*.parquet
 benchmark/phase1/sources/*.pdf
 benchmark/phase1/sources/*.png
 benchmark/phase1/sources/*.txt
+
 # Test chính và Gold Test phải lưu kho riêng có quyền truy cập, không dựa vào gitignore.

@@ -1,0 +1,31 @@
+ticker,company_name,exchange,sector,entity_group,accounting_standard,listed_date_hose,public_bctc_since,eligible_5y,keep_status,exclusion_reason,is_pilot
+ACB,Ngân hàng TMCP Á Châu,HOSE,Ngân hàng,bank,TT49/2014/TT-NHNN,2020-12-09,2006-11-21,true,KEEP,,false
+BID,Ngân hàng TMCP Đầu tư và Phát triển Việt Nam,HOSE,Ngân hàng,bank,TT49/2014/TT-NHNN,2014-01-24,2014-01-24,true,KEEP,,false
+BSR,CTCP Lọc hóa dầu Bình Sơn,HOSE,Năng lượng / Dầu khí,non_financial,TT200/2014/TT-BTC,2025-01-17,2018-03-01,true,KEEP,,false
+BVH,Tập đoàn Bảo Việt,HOSE,Bảo hiểm / Tài chính hỗn hợp,insurance,TT232/2012/TT-BTC,2009-06-25,2009-06-25,true,EXCLUDE,Nhóm Bảo hiểm (chuẩn BCTC TT232 hợp nhất đa mảng không tương thích bộ chỉ số phi tài chính/ngân hàng),false
+CTG,Ngân hàng TMCP Công Thương Việt Nam,HOSE,Ngân hàng,bank,TT49/2014/TT-NHNN,2009-07-16,2009-07-16,true,KEEP,,false
+FPT,CTCP FPT,HOSE,Công nghệ thông tin,non_financial,TT200/2014/TT-BTC,2006-12-13,2006-12-13,true,KEEP,,true
+GAS,Tổng Công ty Khí Việt Nam,HOSE,Tiện ích / Dầu khí,non_financial,TT200/2014/TT-BTC,2012-05-21,2012-05-21,true,KEEP,,false
+GVR,Tập đoàn Công nghiệp Cao su Việt Nam,HOSE,Nguyên vật liệu / Cao su,non_financial,TT200/2014/TT-BTC,2020-03-17,2018-03-21,true,KEEP,,false
+HDB,Ngân hàng TMCP Phát triển TP.HCM,HOSE,Ngân hàng,bank,TT49/2014/TT-NHNN,2018-01-05,2018-01-05,true,KEEP,,false
+HPG,CTCP Tập đoàn Hòa Phát,HOSE,Vật liệu xây dựng / Thép,non_financial,TT200/2014/TT-BTC,2007-11-15,2007-11-15,true,KEEP,,true
+MBB,Ngân hàng TMCP Quân đội,HOSE,Ngân hàng,bank,TT49/2014/TT-NHNN,2011-11-01,2011-11-01,true,KEEP,,false
+MCH,CTCP Hàng tiêu dùng Masan,HOSE,Hàng tiêu dùng thiết yếu,non_financial,TT200/2014/TT-BTC,2026-01-01,2017-01-05,true,KEEP,,false
+MSN,CTCP Tập đoàn Masan,HOSE,Hàng tiêu dùng / Đa ngành,non_financial,TT200/2014/TT-BTC,2009-11-05,2009-11-05,true,KEEP,,false
+MWG,CTCP Đầu tư Thế Giới Di Động,HOSE,Bán lẻ,non_financial,TT200/2014/TT-BTC,2014-07-14,2014-07-14,true,KEEP,,true
+POW,Tổng Công ty Điện lực Dầu khí Việt Nam,HOSE,Tiện ích / Điện lực,non_financial,TT200/2014/TT-BTC,2019-01-14,2018-03-08,true,KEEP,,false
+SAB,Tổng CTCP Bia - Rượu - Nước giải khát Sài Gòn,HOSE,Đồ uống,non_financial,TT200/2014/TT-BTC,2016-12-06,2016-12-06,true,KEEP,,false
+SSB,Ngân hàng TMCP Đông Nam Á,HOSE,Ngân hàng,bank,TT49/2014/TT-NHNN,2021-03-24,2021-03-24,true,KEEP,,false
+SSI,CTCP Chứng khoán SSI,HOSE,Chứng khoán,securities,TT334/2016/TT-BTC,2007-10-29,2006-12-15,true,EXCLUDE,Nhóm Chứng khoán (chuẩn BCTC TT334/2016 cấu trúc doanh thu môi giới/tự doanh/margin khác biệt),false
+STB,Ngân hàng TMCP Sài Gòn Thương Tín,HOSE,Ngân hàng,bank,TT49/2014/TT-NHNN,2006-07-12,2006-07-12,true,KEEP,,false
+TCB,Ngân hàng TMCP Kỹ thương Việt Nam,HOSE,Ngân hàng,bank,TT49/2014/TT-NHNN,2018-06-04,2018-06-04,true,KEEP,,true
+TCX,CTCP Chứng khoán Kỹ Thương (TCBS),HOSE,Chứng khoán,securities,TT334/2016/TT-BTC,2025-10-21,2025-10-21,false,EXCLUDE,Nhóm Chứng khoán (TT334/2016) và mới niêm yết HOSE từ 21/10/2025 (<5 năm niêm yết công khai),false
+VCB,Ngân hàng TMCP Ngoại thương Việt Nam,HOSE,Ngân hàng,bank,TT49/2014/TT-NHNN,2009-06-30,2009-06-30,true,KEEP,,true
+VHM,CTCP Vinhomes,HOSE,Bất động sản,non_financial,TT200/2014/TT-BTC,2018-05-17,2018-05-17,true,KEEP,,false
+VIB,Ngân hàng TMCP Quốc tế Việt Nam,HOSE,Ngân hàng,bank,TT49/2014/TT-NHNN,2020-11-10,2017-01-09,true,KEEP,,false
+VIC,Tập đoàn Vingroup,HOSE,Bất động sản / Đa ngành,non_financial,TT200/2014/TT-BTC,2007-09-19,2007-09-19,true,KEEP,,false
+VJC,CTCP Hàng không Vietjet,HOSE,Hàng không / Vận tải,non_financial,TT200/2014/TT-BTC,2017-02-28,2017-02-28,true,KEEP,,false
+VNM,CTCP Sữa Việt Nam,HOSE,Thực phẩm & Đồ uống,non_financial,TT200/2014/TT-BTC,2006-01-19,2006-01-19,true,KEEP,,false
+VPB,Ngân hàng TMCP Việt Nam Thịnh Vượng,HOSE,Ngân hàng,bank,TT49/2014/TT-NHNN,2017-08-17,2017-08-17,true,KEEP,,false
+VPL,CTCP Vinpearl,HOSE,Du lịch & Nghỉ dưỡng,non_financial,TT200/2014/TT-BTC,2025-05-13,2025-05-13,false,EXCLUDE,Tái niêm yết độc lập trên HOSE từ 13/05/2025 (trước đó hợp nhất trong Vingroup); không đủ chuỗi BCTC quý niêm yết công khai liên tục >= 5 năm,false
+VRE,CTCP Vincom Retail,HOSE,Bất động sản bán lẻ,non_financial,TT200/2014/TT-BTC,2017-11-06,2017-11-06,true,KEEP,,false
