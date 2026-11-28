@@ -1,0 +1,17 @@
+{
+  "config_version": "0.1",
+  "status": "draft_pilot_defaults_pending_team_lock",
+  "provider": "mock",
+  "model": "TBD_TEAM_LOCK",
+  "api_version": "TBD_TEAM_LOCK",
+  "base_url": "",
+  "api_key_env": "LLM_API_KEY",
+  "temperature": 0.0,
+  "seed": 42,
+  "max_tokens": 1024,
+  "timeout_sec": 30.0,
+  "max_retries": 2,
+  "max_repair_calls": 0,
+  "prompt_version": "pilot-v0.1",
+  "log_format": "jsonl"
+}
