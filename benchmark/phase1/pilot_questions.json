@@ -1,0 +1,521 @@
+[
+  {
+    "id": "P01",
+    "question": "Doanh thu thuần hợp nhất riêng quý IV/2024 của HPG là bao nhiêu VND, theo bản BCTC quý IV trong snapshot?",
+    "family_id": "REV_Q",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG"
+    ],
+    "periods": [
+      "2024Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P02",
+    "question": "Doanh thu thuần hợp nhất riêng quý IV/2024 của FPT là bao nhiêu VND, theo bản BCTC quý IV trong snapshot?",
+    "family_id": "REV_Q",
+    "split": "pilot_public",
+    "tickers": [
+      "FPT"
+    ],
+    "periods": [
+      "2024Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P03",
+    "question": "Doanh thu thuần hợp nhất riêng quý IV/2024 của VNM là bao nhiêu VND, theo bản BCTC quý IV trong snapshot?",
+    "family_id": "REV_Q",
+    "split": "pilot_public",
+    "tickers": [
+      "VNM"
+    ],
+    "periods": [
+      "2024Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P04",
+    "question": "Doanh thu thuần hợp nhất quý IV/2024 của HPG tăng trưởng bao nhiêu phần trăm so với quý IV/2023? Dùng cùng bản BCTC quý IV trong snapshot.",
+    "family_id": "REV_YOY",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG"
+    ],
+    "periods": [
+      "2024Q4",
+      "2023Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P05",
+    "question": "Doanh thu thuần hợp nhất quý IV/2024 của FPT tăng trưởng bao nhiêu phần trăm so với quý IV/2023? Dùng cùng bản BCTC quý IV trong snapshot.",
+    "family_id": "REV_YOY",
+    "split": "pilot_public",
+    "tickers": [
+      "FPT"
+    ],
+    "periods": [
+      "2024Q4",
+      "2023Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P06",
+    "question": "Doanh thu thuần hợp nhất quý IV/2024 của VNM tăng trưởng bao nhiêu phần trăm so với quý IV/2023? Dùng cùng bản BCTC quý IV trong snapshot.",
+    "family_id": "REV_YOY",
+    "split": "pilot_public",
+    "tickers": [
+      "VNM"
+    ],
+    "periods": [
+      "2024Q4",
+      "2023Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P07",
+    "question": "Doanh thu thuần hợp nhất lũy kế cả năm 2024 của HPG là bao nhiêu VND theo bản BCTC quý IV trong snapshot?",
+    "family_id": "REV_YTD",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG"
+    ],
+    "periods": [
+      "FY2024"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P08",
+    "question": "Doanh thu thuần hợp nhất lũy kế cả năm 2024 của FPT là bao nhiêu VND theo bản BCTC quý IV trong snapshot?",
+    "family_id": "REV_YTD",
+    "split": "pilot_public",
+    "tickers": [
+      "FPT"
+    ],
+    "periods": [
+      "FY2024"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P09",
+    "question": "Doanh thu thuần hợp nhất lũy kế cả năm 2024 của VNM là bao nhiêu VND theo bản BCTC quý IV trong snapshot?",
+    "family_id": "REV_YTD",
+    "split": "pilot_public",
+    "tickers": [
+      "VNM"
+    ],
+    "periods": [
+      "FY2024"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P10",
+    "question": "Doanh thu thuần hợp nhất cả năm 2024 của HPG tăng trưởng bao nhiêu phần trăm so với cả năm 2023, theo bản BCTC quý IV trong snapshot?",
+    "family_id": "REV_YOY",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG"
+    ],
+    "periods": [
+      "FY2024",
+      "FY2023"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P11",
+    "question": "Doanh thu thuần hợp nhất cả năm 2024 của FPT tăng trưởng bao nhiêu phần trăm so với cả năm 2023, theo bản BCTC quý IV trong snapshot?",
+    "family_id": "REV_YOY",
+    "split": "pilot_public",
+    "tickers": [
+      "FPT"
+    ],
+    "periods": [
+      "FY2024",
+      "FY2023"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P12",
+    "question": "Doanh thu thuần hợp nhất cả năm 2024 của VNM tăng trưởng bao nhiêu phần trăm so với cả năm 2023, theo bản BCTC quý IV trong snapshot?",
+    "family_id": "REV_YOY",
+    "split": "pilot_public",
+    "tickers": [
+      "VNM"
+    ],
+    "periods": [
+      "FY2024",
+      "FY2023"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P13",
+    "question": "Tính ROE TTM hợp nhất của HPG tại 31/12/2024 (%): lấy tổng LNST năm 2024 chia bình quân tổng vốn chủ sở hữu đầu và cuối năm, đều gồm lợi ích không kiểm soát, theo đúng bản báo cáo trong snapshot.",
+    "family_id": "ROE_TTM",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG"
+    ],
+    "periods": [
+      "FY2024",
+      "2023-12-31",
+      "2024-12-31"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P14",
+    "question": "Tính ROE TTM hợp nhất của FPT tại 31/12/2024 (%): lấy tổng LNST năm 2024 chia bình quân tổng vốn chủ sở hữu đầu và cuối năm, đều gồm lợi ích không kiểm soát, theo đúng bản báo cáo trong snapshot.",
+    "family_id": "ROE_TTM",
+    "split": "pilot_public",
+    "tickers": [
+      "FPT"
+    ],
+    "periods": [
+      "FY2024",
+      "2023-12-31",
+      "2024-12-31"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P15",
+    "question": "Tính ROE TTM hợp nhất của VNM tại 31/12/2024 (%): lấy tổng LNST năm 2024 chia bình quân tổng vốn chủ sở hữu đầu và cuối năm, đều gồm lợi ích không kiểm soát, theo đúng bản báo cáo trong snapshot.",
+    "family_id": "ROE_TTM",
+    "split": "pilot_public",
+    "tickers": [
+      "VNM"
+    ],
+    "periods": [
+      "FY2024",
+      "2023-12-31",
+      "2024-12-31"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P16",
+    "question": "Tính ROE TTM hợp nhất của VCB tại 31/12/2024 (%): lấy tổng LNST năm 2024 chia bình quân tổng vốn chủ sở hữu đầu và cuối năm, đều gồm lợi ích không kiểm soát, theo đúng bản báo cáo trong snapshot.",
+    "family_id": "ROE_TTM",
+    "split": "pilot_public",
+    "tickers": [
+      "VCB"
+    ],
+    "periods": [
+      "FY2024",
+      "2023-12-31",
+      "2024-12-31"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P17",
+    "question": "Tính ROE TTM hợp nhất của CTG tại 31/12/2024 (%): lấy tổng LNST năm 2024 chia bình quân tổng vốn chủ sở hữu đầu và cuối năm, đều gồm lợi ích không kiểm soát, theo đúng bản báo cáo trong snapshot.",
+    "family_id": "ROE_TTM",
+    "split": "pilot_public",
+    "tickers": [
+      "CTG"
+    ],
+    "periods": [
+      "FY2024",
+      "2023-12-31",
+      "2024-12-31"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P18",
+    "question": "Doanh thu thuần hợp nhất của ngân hàng VCB năm 2024 là bao nhiêu?",
+    "family_id": "BANK_REVENUE",
+    "split": "pilot_public",
+    "tickers": [
+      "VCB"
+    ],
+    "periods": [
+      "FY2024"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P19",
+    "question": "Doanh thu thuần hợp nhất của ngân hàng CTG năm 2024 là bao nhiêu?",
+    "family_id": "BANK_REVENUE",
+    "split": "pilot_public",
+    "tickers": [
+      "CTG"
+    ],
+    "periods": [
+      "FY2024"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P20",
+    "question": "Doanh thu thuần hợp nhất HPG cuối năm 2024 là bao nhiêu?",
+    "family_id": "AMBIG_PERIOD",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG"
+    ],
+    "periods": [
+      "2024"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated",
+    "ambiguity_type": "quarter_vs_year"
+  },
+  {
+    "id": "P21",
+    "question": "Doanh thu thuần hợp nhất FPT quý IV/2024 tăng bao nhiêu so với cùng kỳ?",
+    "family_id": "AMBIG_MEASURE",
+    "split": "pilot_public",
+    "tickers": [
+      "FPT"
+    ],
+    "periods": [
+      "2024Q4",
+      "2023Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated",
+    "ambiguity_type": "absolute_vs_percentage"
+  },
+  {
+    "id": "P22",
+    "question": "ROE của VCB là bao nhiêu?",
+    "family_id": "AMBIG_PERIOD",
+    "split": "pilot_public",
+    "tickers": [
+      "VCB"
+    ],
+    "periods": [],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated",
+    "ambiguity_type": "missing_period_and_formula"
+  },
+  {
+    "id": "P23",
+    "question": "Doanh thu thuần hợp nhất HPG quý IV/2024 tăng bao nhiêu VND so với quý IV/2023, theo cùng bản BCTC quý IV?",
+    "family_id": "REV_ABSOLUTE",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG"
+    ],
+    "periods": [
+      "2024Q4",
+      "2023Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P24",
+    "question": "Lập bảng doanh thu thuần hợp nhất riêng quý IV/2024 (VND) của HPG, FPT và VNM theo các bản BCTC quý IV trong snapshot.",
+    "family_id": "MULTI_TABLE",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG",
+      "FPT",
+      "VNM"
+    ],
+    "periods": [
+      "2024Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P25",
+    "question": "Trong HPG, FPT, VNM, mã nào có doanh thu thuần hợp nhất riêng quý IV/2024 lớn nhất? Dùng snapshot đã chỉ định.",
+    "family_id": "RANK_ABSOLUTE",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG",
+      "FPT",
+      "VNM"
+    ],
+    "periods": [
+      "2024Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P26",
+    "question": "Trong HPG, FPT, VNM, mã nào có tỷ lệ tăng trưởng YoY doanh thu thuần hợp nhất riêng quý IV/2024 cao nhất? Dùng snapshot đã chỉ định.",
+    "family_id": "RANK_GROWTH",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG",
+      "FPT",
+      "VNM"
+    ],
+    "periods": [
+      "2024Q4",
+      "2023Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P27",
+    "question": "Chỉ trong HPG, FPT, VNM, lọc mã có YoY doanh thu thuần hợp nhất quý IV/2024 lớn hơn 100%, theo snapshot đã chỉ định.",
+    "family_id": "FILTER_EMPTY",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG",
+      "FPT",
+      "VNM"
+    ],
+    "periods": [
+      "2024Q4",
+      "2023Q4"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P28",
+    "question": "Tính ROE TTM hợp nhất VNM tại 31/12/2024 bằng tổng LNST năm chia bình quân tổng vốn chủ đầu/cuối năm, chỉ dùng dữ liệu được cấp.",
+    "family_id": "MISSING_EQUITY",
+    "split": "pilot_public",
+    "tickers": [
+      "VNM"
+    ],
+    "periods": [
+      "FY2024",
+      "2023-12-31",
+      "2024-12-31"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated",
+    "fixture_id": "withhold_vnm_opening_equity",
+    "data_variant": "real_data_withheld",
+    "excluded_cell_ids": [
+      "VNM_eq0"
+    ]
+  },
+  {
+    "id": "P29",
+    "question": "Lập bảng ROE TTM VCB và CTG tại 31/12/2024 (%), dùng tổng LNST cả năm chia bình quân tổng vốn chủ đầu/cuối năm (đều gồm lợi ích không kiểm soát), theo phiên bản từng mã trong snapshot.",
+    "family_id": "MULTI_ROE",
+    "split": "pilot_public",
+    "tickers": [
+      "VCB",
+      "CTG"
+    ],
+    "periods": [
+      "FY2024",
+      "2023-12-31",
+      "2024-12-31"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  },
+  {
+    "id": "P30",
+    "question": "Tính doanh thu thuần hợp nhất 9 tháng đầu năm 2024 của HPG bằng doanh thu cả năm trừ riêng quý IV, chỉ dùng cùng bản BCTC quý IV trong snapshot.",
+    "family_id": "REV_YTD",
+    "split": "pilot_public",
+    "tickers": [
+      "HPG"
+    ],
+    "periods": [
+      "9M2024"
+    ],
+    "question_date": "2026-11-22",
+    "snapshot_id": "tv4-evidence-v0.1",
+    "input_type": "structured_snapshot",
+    "scope": "consolidated"
+  }
+]

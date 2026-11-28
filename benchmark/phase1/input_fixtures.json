@@ -1,0 +1,70 @@
+[
+  {
+    "id": "tv4-evidence-v0.1",
+    "allowed_cell_ids": [
+      "HPG_q24",
+      "HPG_q23",
+      "HPG_fy24",
+      "HPG_fy23",
+      "HPG_pat",
+      "HPG_eq0",
+      "HPG_eq1",
+      "FPT_q24",
+      "FPT_q23",
+      "FPT_fy24",
+      "FPT_fy23",
+      "FPT_pat",
+      "FPT_eq0",
+      "FPT_eq1",
+      "VNM_q24",
+      "VNM_q23",
+      "VNM_fy24",
+      "VNM_fy23",
+      "VNM_pat",
+      "VNM_eq0",
+      "VNM_eq1",
+      "VCB_pat",
+      "VCB_eq0",
+      "VCB_eq1",
+      "CTG_pat",
+      "CTG_eq0",
+      "CTG_eq1"
+    ],
+    "note": "Đầu vào pilot; không phải snapshot ETL 5 năm của TV1."
+  },
+  {
+    "id": "withhold_vnm_opening_equity",
+    "allowed_cell_ids": [
+      "HPG_q24",
+      "HPG_q23",
+      "HPG_fy24",
+      "HPG_fy23",
+      "HPG_pat",
+      "HPG_eq0",
+      "HPG_eq1",
+      "FPT_q24",
+      "FPT_q23",
+      "FPT_fy24",
+      "FPT_fy23",
+      "FPT_pat",
+      "FPT_eq0",
+      "FPT_eq1",
+      "VNM_q24",
+      "VNM_q23",
+      "VNM_fy24",
+      "VNM_fy23",
+      "VNM_pat",
+      "VNM_eq1",
+      "VCB_pat",
+      "VCB_eq0",
+      "VCB_eq1",
+      "CTG_pat",
+      "CTG_eq0",
+      "CTG_eq1"
+    ],
+    "excluded_cell_ids": [
+      "VNM_eq0"
+    ],
+    "note": "TV3 chỉ cấp các ô trong allowlist; không cấp PDF, Gold, Internet hoặc bộ snapshot đầy đủ trong ca P28."
+  }
+]

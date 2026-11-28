@@ -1,0 +1,56 @@
+[
+  {
+    "id": "CP01",
+    "left": "P01",
+    "right": "P07",
+    "dimension": "quarter_vs_ytd",
+    "split_group": "CP01",
+    "evidence_status": "computed_from_transcribed_real_cells",
+    "human_verified_by": null
+  },
+  {
+    "id": "CP02",
+    "left": "P02",
+    "right": "P08",
+    "dimension": "quarter_vs_ytd",
+    "split_group": "CP02",
+    "evidence_status": "computed_from_transcribed_real_cells",
+    "human_verified_by": null
+  },
+  {
+    "id": "CP03",
+    "left": "P03",
+    "right": "P09",
+    "dimension": "quarter_vs_ytd",
+    "split_group": "CP03",
+    "evidence_status": "computed_from_transcribed_real_cells",
+    "human_verified_by": null
+  },
+  {
+    "id": "CP04",
+    "left": "P04",
+    "right": "P23",
+    "dimension": "percentage_vs_absolute",
+    "split_group": "CP04",
+    "evidence_status": "computed_from_transcribed_real_cells",
+    "human_verified_by": null
+  },
+  {
+    "id": "CP05",
+    "left": "P25",
+    "right": "P26",
+    "dimension": "rank_absolute_vs_growth",
+    "split_group": "CP05",
+    "evidence_status": "computed_from_transcribed_real_cells",
+    "human_verified_by": null
+  },
+  {
+    "id": "CP06",
+    "left": "P15",
+    "right": "P28",
+    "dimension": "available_vs_withheld_input",
+    "split_group": "CP06",
+    "evidence_status": "computed_from_transcribed_real_cells",
+    "human_verified_by": null
+  }
+]

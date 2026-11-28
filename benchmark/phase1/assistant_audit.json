@@ -1,0 +1,573 @@
+{
+  "visual_review_date": "2026-11-23",
+  "reviewer": "Codex assistant (same conversation; not independent human TV5)",
+  "calculation": "BigInt exact rational; half-up to 8 decimals, display to 4",
+  "artifact_sha256": {
+    "source_cells.json": "4ad27babbc0256cd9e7c16a7c81d766ca514f99dd460c2119d3adcb8a68749db",
+    "pilot_questions.json": "4fbbb8e75672d86240f9ffc3486a03998917e8851f1316b6b8b7cf0fae95da0e",
+    "pilot_gold.json": "1872879008e4e1d629d86546834c5a4ef8c5b1beb4981a1240388b213ced5f91",
+    "contrast_pairs.json": "deed1ad73ecadcb13fe3852d4042547dda1a768bbe4142ed9559a0f0eaa8a928",
+    "input_fixtures.json": "78e25c626b136e2a7122588994cfd3e19a2d0df2b35cf1b91111c58364bf0bef",
+    "sources/manifest.json": "41e2b7e07ca3ac69f2b561d7384e422ddebe07eb4023478464b0a98ea0ac912d"
+  },
+  "pdf_sha256": {
+    "HPG_Q4": "ea32528aa5b353b4d93b261596e03fe0be5bff36ebc4e708d51a456abc3b2af7",
+    "FPT_Q4": "e840b0c6aec6af70d1a225ee9e173e7f038f15746612bf744d5727274c2aab90",
+    "VNM_Q4": "5edd44832a8fb39a67fe4b8f485abc3f1ff26ee359825a0d3cb4c6262ae1895d",
+    "VCB_FY": "2f1c19900827b939f4beef52d4ebc83d33651302fc0a220d42ee8b5f9eccdaa4",
+    "CTG_Q4": "4ce6c7aa1d95f46d912e317eb2ef3fe79bd2450fa4812e2409e182ff5a7cf279"
+  },
+  "cell_checks": [
+    {
+      "cell_id": "HPG_q24",
+      "value": "34490282626689",
+      "pdf_page": 6,
+      "result": "pass"
+    },
+    {
+      "cell_id": "HPG_q23",
+      "value": "34383804927755",
+      "pdf_page": 6,
+      "result": "pass"
+    },
+    {
+      "cell_id": "HPG_fy24",
+      "value": "138855112131887",
+      "pdf_page": 6,
+      "result": "pass"
+    },
+    {
+      "cell_id": "HPG_fy23",
+      "value": "118953027893654",
+      "pdf_page": 6,
+      "result": "pass"
+    },
+    {
+      "cell_id": "HPG_pat",
+      "value": "12020020984285",
+      "pdf_page": 6,
+      "result": "pass"
+    },
+    {
+      "cell_id": "HPG_eq0",
+      "value": "102836419239379",
+      "pdf_page": 5,
+      "result": "pass"
+    },
+    {
+      "cell_id": "HPG_eq1",
+      "value": "114647455346716",
+      "pdf_page": 5,
+      "result": "pass"
+    },
+    {
+      "cell_id": "FPT_q24",
+      "value": "17607817805892",
+      "pdf_page": 8,
+      "result": "pass"
+    },
+    {
+      "cell_id": "FPT_q23",
+      "value": "14690412703323",
+      "pdf_page": 8,
+      "result": "pass"
+    },
+    {
+      "cell_id": "FPT_fy24",
+      "value": "62848794351368",
+      "pdf_page": 8,
+      "result": "pass"
+    },
+    {
+      "cell_id": "FPT_fy23",
+      "value": "52617900827385",
+      "pdf_page": 8,
+      "result": "pass"
+    },
+    {
+      "cell_id": "FPT_pat",
+      "value": "9420078521864",
+      "pdf_page": 8,
+      "result": "pass"
+    },
+    {
+      "cell_id": "FPT_eq0",
+      "value": "29933011216233",
+      "pdf_page": 7,
+      "result": "pass"
+    },
+    {
+      "cell_id": "FPT_eq1",
+      "value": "35796626418970",
+      "pdf_page": 7,
+      "result": "pass"
+    },
+    {
+      "cell_id": "VNM_q24",
+      "value": "15477073125441",
+      "pdf_page": 8,
+      "result": "pass"
+    },
+    {
+      "cell_id": "VNM_q23",
+      "value": "15618710944490",
+      "pdf_page": 8,
+      "result": "pass"
+    },
+    {
+      "cell_id": "VNM_fy24",
+      "value": "61782609528445",
+      "pdf_page": 8,
+      "result": "pass"
+    },
+    {
+      "cell_id": "VNM_fy23",
+      "value": "60368951511505",
+      "pdf_page": 8,
+      "result": "pass"
+    },
+    {
+      "cell_id": "VNM_pat",
+      "value": "9452892989948",
+      "pdf_page": 9,
+      "result": "pass"
+    },
+    {
+      "cell_id": "VNM_eq0",
+      "value": "35025743765470",
+      "pdf_page": 7,
+      "result": "pass"
+    },
+    {
+      "cell_id": "VNM_eq1",
+      "value": "36174402829663",
+      "pdf_page": 7,
+      "result": "pass"
+    },
+    {
+      "cell_id": "VCB_pat",
+      "value": "33853117",
+      "pdf_page": 67,
+      "result": "pass"
+    },
+    {
+      "cell_id": "VCB_eq0",
+      "value": "165080490",
+      "pdf_page": 66,
+      "result": "pass"
+    },
+    {
+      "cell_id": "VCB_eq1",
+      "value": "196209168",
+      "pdf_page": 66,
+      "result": "pass"
+    },
+    {
+      "cell_id": "CTG_pat",
+      "value": "25475009",
+      "pdf_page": 7,
+      "result": "pass"
+    },
+    {
+      "cell_id": "CTG_eq0",
+      "value": "125871820",
+      "pdf_page": 4,
+      "result": "pass"
+    },
+    {
+      "cell_id": "CTG_eq1",
+      "value": "149944138",
+      "pdf_page": 4,
+      "result": "pass"
+    }
+  ],
+  "question_checks": [
+    {
+      "question_id": "P01",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "HPG",
+          "period": "2024Q4",
+          "recomputed": "34490282626689.00000000",
+          "unit": "VND",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P02",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "FPT",
+          "period": "2024Q4",
+          "recomputed": "17607817805892.00000000",
+          "unit": "VND",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P03",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "VNM",
+          "period": "2024Q4",
+          "recomputed": "15477073125441.00000000",
+          "unit": "VND",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P04",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "HPG",
+          "period": "2024Q4",
+          "recomputed": "0.30967399",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P05",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "FPT",
+          "period": "2024Q4",
+          "recomputed": "19.85924536",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P06",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "VNM",
+          "period": "2024Q4",
+          "recomputed": "-0.90684705",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P07",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "HPG",
+          "period": "FY2024",
+          "recomputed": "138855112131887.00000000",
+          "unit": "VND",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P08",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "FPT",
+          "period": "FY2024",
+          "recomputed": "62848794351368.00000000",
+          "unit": "VND",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P09",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "VNM",
+          "period": "FY2024",
+          "recomputed": "61782609528445.00000000",
+          "unit": "VND",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P10",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "HPG",
+          "period": "FY2024",
+          "recomputed": "16.73104467",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P11",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "FPT",
+          "period": "FY2024",
+          "recomputed": "19.44375082",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P12",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "VNM",
+          "period": "FY2024",
+          "recomputed": "2.34169715",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P13",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "HPG",
+          "period": "TTM@2024-12-31",
+          "recomputed": "11.05371238",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P14",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "FPT",
+          "period": "TTM@2024-12-31",
+          "recomputed": "28.66310803",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P15",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "VNM",
+          "period": "TTM@2024-12-31",
+          "recomputed": "26.55301553",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P16",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "VCB",
+          "period": "TTM@2024-12-31",
+          "recomputed": "18.74015281",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P17",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "CTG",
+          "period": "TTM@2024-12-31",
+          "recomputed": "18.47246924",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P18",
+      "expected_action": "clarify",
+      "rows": [],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P19",
+      "expected_action": "clarify",
+      "rows": [],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P20",
+      "expected_action": "clarify",
+      "rows": [],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P21",
+      "expected_action": "clarify",
+      "rows": [],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P22",
+      "expected_action": "clarify",
+      "rows": [],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P23",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "HPG",
+          "period": "2024Q4",
+          "recomputed": "106477698934.00000000",
+          "unit": "VND",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P24",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "HPG",
+          "period": "2024Q4",
+          "recomputed": "34490282626689.00000000",
+          "unit": "VND",
+          "result": "pass"
+        },
+        {
+          "ticker": "FPT",
+          "period": "2024Q4",
+          "recomputed": "17607817805892.00000000",
+          "unit": "VND",
+          "result": "pass"
+        },
+        {
+          "ticker": "VNM",
+          "period": "2024Q4",
+          "recomputed": "15477073125441.00000000",
+          "unit": "VND",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P25",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "HPG",
+          "period": "2024Q4",
+          "recomputed": "34490282626689.00000000",
+          "unit": "VND",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P26",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "FPT",
+          "period": "2024Q4",
+          "recomputed": "19.85924536",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P27",
+      "expected_action": "empty",
+      "rows": [],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P28",
+      "expected_action": "missing_data",
+      "rows": [],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P29",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "VCB",
+          "period": "TTM@2024-12-31",
+          "recomputed": "18.74015281",
+          "unit": "pct",
+          "result": "pass"
+        },
+        {
+          "ticker": "CTG",
+          "period": "TTM@2024-12-31",
+          "recomputed": "18.47246924",
+          "unit": "pct",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    },
+    {
+      "question_id": "P30",
+      "expected_action": "answer",
+      "rows": [
+        {
+          "ticker": "HPG",
+          "period": "9M2024",
+          "recomputed": "104364829505198.00000000",
+          "unit": "VND",
+          "result": "pass"
+        }
+      ],
+      "result": "pass_under_documented_policy"
+    }
+  ],
+  "numeric_corrections": 0,
+  "full_phase_gate_approved": false
+}

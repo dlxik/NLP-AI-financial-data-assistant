@@ -1,0 +1,5 @@
+tmp/
+benchmark/phase1/sources/*.pdf
+benchmark/phase1/sources/*.png
+benchmark/phase1/sources/*.txt
+# Test chính và Gold Test phải lưu kho riêng có quyền truy cập, không dựa vào gitignore.

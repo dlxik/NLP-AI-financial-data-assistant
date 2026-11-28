@@ -1,0 +1,72 @@
+[
+  {
+    "id": "HPG_Q4",
+    "ticker": "HPG",
+    "file": "sources/HPG_2024Q4.pdf",
+    "url": "https://file.hoaphat.com.vn/hoaphat-com-vn/2025/02/bao-cao-tai-chinh-hop-nhat-quy-4-2024.pdf",
+    "version": "quarterly_unaudited",
+    "hosting": "issuer",
+    "scope": "consolidated",
+    "basis": "VAS",
+    "retrieved_date": "2026-11-22",
+    "publication_date": null,
+    "publication_note": "Ngày tải không phải ngày công bố. Chưa kiểm chứng ngày công bố lịch sử.",
+    "sha256": "ea32528aa5b353b4d93b261596e03fe0be5bff36ebc4e708d51a456abc3b2af7"
+  },
+  {
+    "id": "FPT_Q4",
+    "ticker": "FPT",
+    "file": "sources/FPT_2024Q4.pdf",
+    "url": "https://file.fpts.com.vn/FileStore2/File/2025/01/24/20250124_-_FPT_-_BCTC_hop_nhat_Quy_4_nam_2024.pdf",
+    "version": "quarterly_unaudited",
+    "hosting": "issuer_document_on_broker_mirror",
+    "scope": "consolidated",
+    "basis": "VAS",
+    "retrieved_date": "2026-11-22",
+    "publication_date": null,
+    "publication_note": "Ngày tải không phải ngày công bố. Chưa kiểm chứng ngày công bố lịch sử.",
+    "sha256": "e840b0c6aec6af70d1a225ee9e173e7f038f15746612bf744d5727274c2aab90"
+  },
+  {
+    "id": "VNM_Q4",
+    "ticker": "VNM",
+    "file": "sources/VNM_2024_VAS.pdf",
+    "url": "https://cdn.24hmoney.vn/upload/file/2025-1/2025-02-25/no-name-1740468308.pdf",
+    "version": "quarterly_unaudited",
+    "hosting": "issuer_document_on_mirror",
+    "scope": "consolidated",
+    "basis": "VAS",
+    "retrieved_date": "2026-11-22",
+    "publication_date": null,
+    "publication_note": "Ngày tải không phải ngày công bố. Chưa kiểm chứng ngày công bố lịch sử.",
+    "sha256": "5edd44832a8fb39a67fe4b8f485abc3f1ff26ee359825a0d3cb4c6262ae1895d"
+  },
+  {
+    "id": "VCB_FY",
+    "ticker": "VCB",
+    "file": "sources/VCB_2024.pdf",
+    "url": "https://www.vietcombank.com.vn/-/media/Project/VCB-Sites/VCB/Nha-Dau-tu/Files/BC-dinh-ky/BC-thuong-nien/2024/EN_VCB-Annual-Report-2024_Full_250426_FN_compressed.pdf",
+    "version": "annual_audited_2023_restated",
+    "hosting": "issuer",
+    "scope": "consolidated",
+    "basis": "VAS",
+    "retrieved_date": "2026-11-22",
+    "publication_date": null,
+    "publication_note": "Ngày tải không phải ngày công bố. Chưa kiểm chứng ngày công bố lịch sử.",
+    "sha256": "2f1c19900827b939f4beef52d4ebc83d33651302fc0a220d42ee8b5f9eccdaa4"
+  },
+  {
+    "id": "CTG_Q4",
+    "ticker": "CTG",
+    "file": "sources/CTG_2024Q4.pdf",
+    "url": "https://investor.vietinbank.vn/documents/20126/214683/Consolidated%2BFinancial%2BStatements%2B4Q2024.pdf/ad2420ea-a354-17c8-17e5-81c59671ddb3?t=1763311366556",
+    "version": "quarterly_unaudited",
+    "hosting": "issuer",
+    "scope": "consolidated",
+    "basis": "VAS",
+    "retrieved_date": "2026-11-22",
+    "publication_date": null,
+    "publication_note": "Ngày tải không phải ngày công bố. Chưa kiểm chứng ngày công bố lịch sử.",
+    "sha256": "4ce6c7aa1d95f46d912e317eb2ef3fe79bd2450fa4812e2409e182ff5a7cf279"
+  }
+]

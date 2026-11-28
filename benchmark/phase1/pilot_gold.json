@@ -1,0 +1,1291 @@
+[
+  {
+    "question_id": "P01",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "HPG",
+        "period": "2024Q4",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 34490282626689,
+        "display_value": "34490282626689",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "HPG_q24"
+        ],
+        "operands": [
+          {
+            "id": "HPG_q24",
+            "value": "34490282626689",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P02",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "FPT",
+        "period": "2024Q4",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 17607817805892,
+        "display_value": "17607817805892",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "FPT_q24"
+        ],
+        "operands": [
+          {
+            "id": "FPT_q24",
+            "value": "17607817805892",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P03",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "VNM",
+        "period": "2024Q4",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 15477073125441,
+        "display_value": "15477073125441",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "VNM_q24"
+        ],
+        "operands": [
+          {
+            "id": "VNM_q24",
+            "value": "15477073125441",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P04",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "HPG",
+        "period": "2024Q4",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": 0.30967399,
+        "display_value": "0.3097",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "HPG_q24",
+          "HPG_q23"
+        ],
+        "operands": [
+          {
+            "id": "HPG_q24",
+            "value": "34490282626689",
+            "unit": "VND"
+          },
+          {
+            "id": "HPG_q23",
+            "value": "34383804927755",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P05",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "FPT",
+        "period": "2024Q4",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": 19.85924536,
+        "display_value": "19.8592",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "FPT_q24",
+          "FPT_q23"
+        ],
+        "operands": [
+          {
+            "id": "FPT_q24",
+            "value": "17607817805892",
+            "unit": "VND"
+          },
+          {
+            "id": "FPT_q23",
+            "value": "14690412703323",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P06",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "VNM",
+        "period": "2024Q4",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": -0.90684705,
+        "display_value": "-0.9068",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "VNM_q24",
+          "VNM_q23"
+        ],
+        "operands": [
+          {
+            "id": "VNM_q24",
+            "value": "15477073125441",
+            "unit": "VND"
+          },
+          {
+            "id": "VNM_q23",
+            "value": "15618710944490",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P07",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "HPG",
+        "period": "FY2024",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 138855112131887,
+        "display_value": "138855112131887",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "HPG_fy24"
+        ],
+        "operands": [
+          {
+            "id": "HPG_fy24",
+            "value": "138855112131887",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P08",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "FPT",
+        "period": "FY2024",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 62848794351368,
+        "display_value": "62848794351368",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "FPT_fy24"
+        ],
+        "operands": [
+          {
+            "id": "FPT_fy24",
+            "value": "62848794351368",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P09",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "VNM",
+        "period": "FY2024",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 61782609528445,
+        "display_value": "61782609528445",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "VNM_fy24"
+        ],
+        "operands": [
+          {
+            "id": "VNM_fy24",
+            "value": "61782609528445",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P10",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "HPG",
+        "period": "FY2024",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": 16.73104467,
+        "display_value": "16.7310",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "HPG_fy24",
+          "HPG_fy23"
+        ],
+        "operands": [
+          {
+            "id": "HPG_fy24",
+            "value": "138855112131887",
+            "unit": "VND"
+          },
+          {
+            "id": "HPG_fy23",
+            "value": "118953027893654",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P11",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "FPT",
+        "period": "FY2024",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": 19.44375082,
+        "display_value": "19.4438",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "FPT_fy24",
+          "FPT_fy23"
+        ],
+        "operands": [
+          {
+            "id": "FPT_fy24",
+            "value": "62848794351368",
+            "unit": "VND"
+          },
+          {
+            "id": "FPT_fy23",
+            "value": "52617900827385",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P12",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "VNM",
+        "period": "FY2024",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": 2.34169715,
+        "display_value": "2.3417",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "VNM_fy24",
+          "VNM_fy23"
+        ],
+        "operands": [
+          {
+            "id": "VNM_fy24",
+            "value": "61782609528445",
+            "unit": "VND"
+          },
+          {
+            "id": "VNM_fy23",
+            "value": "60368951511505",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P13",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "HPG",
+        "period": "TTM@2024-12-31",
+        "metric": "roe_total",
+        "unit": "pct",
+        "value": 11.05371238,
+        "display_value": "11.0537",
+        "operation": "roe_ttm_pct",
+        "formula": "a / ((b + c) / 2) * 100",
+        "source_cell_ids": [
+          "HPG_pat",
+          "HPG_eq0",
+          "HPG_eq1"
+        ],
+        "operands": [
+          {
+            "id": "HPG_pat",
+            "value": "12020020984285",
+            "unit": "VND"
+          },
+          {
+            "id": "HPG_eq0",
+            "value": "102836419239379",
+            "unit": "VND"
+          },
+          {
+            "id": "HPG_eq1",
+            "value": "114647455346716",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P14",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "FPT",
+        "period": "TTM@2024-12-31",
+        "metric": "roe_total",
+        "unit": "pct",
+        "value": 28.66310803,
+        "display_value": "28.6631",
+        "operation": "roe_ttm_pct",
+        "formula": "a / ((b + c) / 2) * 100",
+        "source_cell_ids": [
+          "FPT_pat",
+          "FPT_eq0",
+          "FPT_eq1"
+        ],
+        "operands": [
+          {
+            "id": "FPT_pat",
+            "value": "9420078521864",
+            "unit": "VND"
+          },
+          {
+            "id": "FPT_eq0",
+            "value": "29933011216233",
+            "unit": "VND"
+          },
+          {
+            "id": "FPT_eq1",
+            "value": "35796626418970",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P15",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "VNM",
+        "period": "TTM@2024-12-31",
+        "metric": "roe_total",
+        "unit": "pct",
+        "value": 26.55301553,
+        "display_value": "26.5530",
+        "operation": "roe_ttm_pct",
+        "formula": "a / ((b + c) / 2) * 100",
+        "source_cell_ids": [
+          "VNM_pat",
+          "VNM_eq0",
+          "VNM_eq1"
+        ],
+        "operands": [
+          {
+            "id": "VNM_pat",
+            "value": "9452892989948",
+            "unit": "VND"
+          },
+          {
+            "id": "VNM_eq0",
+            "value": "35025743765470",
+            "unit": "VND"
+          },
+          {
+            "id": "VNM_eq1",
+            "value": "36174402829663",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P16",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "VCB",
+        "period": "TTM@2024-12-31",
+        "metric": "roe_total",
+        "unit": "pct",
+        "value": 18.74015281,
+        "display_value": "18.7402",
+        "operation": "roe_ttm_pct",
+        "formula": "a / ((b + c) / 2) * 100",
+        "source_cell_ids": [
+          "VCB_pat",
+          "VCB_eq0",
+          "VCB_eq1"
+        ],
+        "operands": [
+          {
+            "id": "VCB_pat",
+            "value": "33853117",
+            "unit": "million_VND"
+          },
+          {
+            "id": "VCB_eq0",
+            "value": "165080490",
+            "unit": "million_VND"
+          },
+          {
+            "id": "VCB_eq1",
+            "value": "196209168",
+            "unit": "million_VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P17",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "CTG",
+        "period": "TTM@2024-12-31",
+        "metric": "roe_total",
+        "unit": "pct",
+        "value": 18.47246924,
+        "display_value": "18.4725",
+        "operation": "roe_ttm_pct",
+        "formula": "a / ((b + c) / 2) * 100",
+        "source_cell_ids": [
+          "CTG_pat",
+          "CTG_eq0",
+          "CTG_eq1"
+        ],
+        "operands": [
+          {
+            "id": "CTG_pat",
+            "value": "25475009",
+            "unit": "million_VND"
+          },
+          {
+            "id": "CTG_eq0",
+            "value": "125871820",
+            "unit": "million_VND"
+          },
+          {
+            "id": "CTG_eq1",
+            "value": "149944138",
+            "unit": "million_VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P18",
+    "expected_action": "clarify",
+    "rows": [],
+    "required_warning": {
+      "code": "BANK_REVENUE_UNDEFINED",
+      "ticker": "VCB",
+      "period": "FY2024",
+      "input": "net_revenue",
+      "message": "VCB là ngân hàng; chưa có ánh xạ doanh thu thuần được chốt. Không tự thay bằng thu nhập lãi thuần hoặc tổng thu nhập hoạt động."
+    },
+    "clarification": "Bạn muốn hỏi thu nhập lãi thuần hay tổng thu nhập hoạt động?",
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P19",
+    "expected_action": "clarify",
+    "rows": [],
+    "required_warning": {
+      "code": "BANK_REVENUE_UNDEFINED",
+      "ticker": "CTG",
+      "period": "FY2024",
+      "input": "net_revenue",
+      "message": "CTG là ngân hàng; chưa có ánh xạ doanh thu thuần được chốt. Không tự thay bằng thu nhập lãi thuần hoặc tổng thu nhập hoạt động."
+    },
+    "clarification": "Bạn muốn hỏi thu nhập lãi thuần hay tổng thu nhập hoạt động?",
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P20",
+    "expected_action": "clarify",
+    "rows": [],
+    "required_warning": null,
+    "clarification": "Bạn muốn riêng quý IV/2024 hay lũy kế cả năm 2024?",
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null,
+    "interpretations": [
+      {
+        "label": "Q4",
+        "resolved_question": "P01",
+        "value": 34490282626689,
+        "unit": "VND"
+      },
+      {
+        "label": "FY",
+        "resolved_question": "P07",
+        "value": 138855112131887,
+        "unit": "VND"
+      }
+    ]
+  },
+  {
+    "question_id": "P21",
+    "expected_action": "clarify",
+    "rows": [],
+    "required_warning": null,
+    "clarification": "Bạn muốn mức tăng tính bằng VND hay tỷ lệ tăng trưởng phần trăm?",
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null,
+    "interpretations": [
+      {
+        "label": "absolute",
+        "value": 2917405102569,
+        "unit": "VND",
+        "source_cell_ids": [
+          "FPT_q24",
+          "FPT_q23"
+        ]
+      },
+      {
+        "label": "percentage",
+        "resolved_question": "P05",
+        "value": 19.85924536,
+        "unit": "pct"
+      }
+    ]
+  },
+  {
+    "question_id": "P22",
+    "expected_action": "clarify",
+    "rows": [],
+    "required_warning": null,
+    "clarification": "Bạn muốn ROE tại kỳ nào, tính theo LNST và vốn chủ sở hữu tổng cộng hay phần thuộc cổ đông ngân hàng?",
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P23",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "HPG",
+        "period": "2024Q4",
+        "metric": "net_revenue_delta",
+        "unit": "VND",
+        "value": 106477698934,
+        "display_value": "106477698934",
+        "operation": "subtract",
+        "formula": "a - b",
+        "source_cell_ids": [
+          "HPG_q24",
+          "HPG_q23"
+        ],
+        "operands": [
+          {
+            "id": "HPG_q24",
+            "value": "34490282626689",
+            "unit": "VND"
+          },
+          {
+            "id": "HPG_q23",
+            "value": "34383804927755",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P24",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "HPG",
+        "period": "2024Q4",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 34490282626689,
+        "display_value": "34490282626689",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "HPG_q24"
+        ],
+        "operands": [
+          {
+            "id": "HPG_q24",
+            "value": "34490282626689",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      },
+      {
+        "ticker": "FPT",
+        "period": "2024Q4",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 17607817805892,
+        "display_value": "17607817805892",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "FPT_q24"
+        ],
+        "operands": [
+          {
+            "id": "FPT_q24",
+            "value": "17607817805892",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      },
+      {
+        "ticker": "VNM",
+        "period": "2024Q4",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 15477073125441,
+        "display_value": "15477073125441",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "VNM_q24"
+        ],
+        "operands": [
+          {
+            "id": "VNM_q24",
+            "value": "15477073125441",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P25",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "HPG",
+        "period": "2024Q4",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 34490282626689,
+        "display_value": "34490282626689",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "HPG_q24"
+        ],
+        "operands": [
+          {
+            "id": "HPG_q24",
+            "value": "34490282626689",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null,
+    "comparison_rows": [
+      {
+        "ticker": "HPG",
+        "period": "2024Q4",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 34490282626689,
+        "display_value": "34490282626689",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "HPG_q24"
+        ],
+        "operands": [
+          {
+            "id": "HPG_q24",
+            "value": "34490282626689",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      },
+      {
+        "ticker": "FPT",
+        "period": "2024Q4",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 17607817805892,
+        "display_value": "17607817805892",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "FPT_q24"
+        ],
+        "operands": [
+          {
+            "id": "FPT_q24",
+            "value": "17607817805892",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      },
+      {
+        "ticker": "VNM",
+        "period": "2024Q4",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 15477073125441,
+        "display_value": "15477073125441",
+        "operation": "lookup",
+        "formula": "a",
+        "source_cell_ids": [
+          "VNM_q24"
+        ],
+        "operands": [
+          {
+            "id": "VNM_q24",
+            "value": "15477073125441",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      }
+    ]
+  },
+  {
+    "question_id": "P26",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "FPT",
+        "period": "2024Q4",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": 19.85924536,
+        "display_value": "19.8592",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "FPT_q24",
+          "FPT_q23"
+        ],
+        "operands": [
+          {
+            "id": "FPT_q24",
+            "value": "17607817805892",
+            "unit": "VND"
+          },
+          {
+            "id": "FPT_q23",
+            "value": "14690412703323",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null,
+    "comparison_rows": [
+      {
+        "ticker": "HPG",
+        "period": "2024Q4",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": 0.30967399,
+        "display_value": "0.3097",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "HPG_q24",
+          "HPG_q23"
+        ],
+        "operands": [
+          {
+            "id": "HPG_q24",
+            "value": "34490282626689",
+            "unit": "VND"
+          },
+          {
+            "id": "HPG_q23",
+            "value": "34383804927755",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      },
+      {
+        "ticker": "FPT",
+        "period": "2024Q4",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": 19.85924536,
+        "display_value": "19.8592",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "FPT_q24",
+          "FPT_q23"
+        ],
+        "operands": [
+          {
+            "id": "FPT_q24",
+            "value": "17607817805892",
+            "unit": "VND"
+          },
+          {
+            "id": "FPT_q23",
+            "value": "14690412703323",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      },
+      {
+        "ticker": "VNM",
+        "period": "2024Q4",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": -0.90684705,
+        "display_value": "-0.9068",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "VNM_q24",
+          "VNM_q23"
+        ],
+        "operands": [
+          {
+            "id": "VNM_q24",
+            "value": "15477073125441",
+            "unit": "VND"
+          },
+          {
+            "id": "VNM_q23",
+            "value": "15618710944490",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ]
+  },
+  {
+    "question_id": "P27",
+    "expected_action": "empty",
+    "rows": [],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null,
+    "comparison_rows": [
+      {
+        "ticker": "HPG",
+        "period": "2024Q4",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": 0.30967399,
+        "display_value": "0.3097",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "HPG_q24",
+          "HPG_q23"
+        ],
+        "operands": [
+          {
+            "id": "HPG_q24",
+            "value": "34490282626689",
+            "unit": "VND"
+          },
+          {
+            "id": "HPG_q23",
+            "value": "34383804927755",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      },
+      {
+        "ticker": "FPT",
+        "period": "2024Q4",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": 19.85924536,
+        "display_value": "19.8592",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "FPT_q24",
+          "FPT_q23"
+        ],
+        "operands": [
+          {
+            "id": "FPT_q24",
+            "value": "17607817805892",
+            "unit": "VND"
+          },
+          {
+            "id": "FPT_q23",
+            "value": "14690412703323",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      },
+      {
+        "ticker": "VNM",
+        "period": "2024Q4",
+        "metric": "net_revenue_yoy",
+        "unit": "pct",
+        "value": -0.90684705,
+        "display_value": "-0.9068",
+        "operation": "yoy_pct",
+        "formula": "(a / b - 1) * 100",
+        "source_cell_ids": [
+          "VNM_q24",
+          "VNM_q23"
+        ],
+        "operands": [
+          {
+            "id": "VNM_q24",
+            "value": "15477073125441",
+            "unit": "VND"
+          },
+          {
+            "id": "VNM_q23",
+            "value": "15618710944490",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "reason": "Đủ số liệu cả 3 mã; không mã nào thỏa điều kiện > 100%."
+  },
+  {
+    "question_id": "P28",
+    "expected_action": "missing_data",
+    "rows": [],
+    "required_warning": {
+      "code": "MISSING_OPENING_EQUITY",
+      "ticker": "VNM",
+      "period": "2023-12-31",
+      "input": "total_equity",
+      "message": "Thiếu vốn chủ sở hữu đầu kỳ VNM tại 31/12/2023 trong đầu vào được cấp; không thay bằng vốn chủ cuối kỳ."
+    },
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null,
+    "reason": "Ca kiểm thử chủ động che ô số thật, không khẳng định doanh nghiệp thiếu báo cáo."
+  },
+  {
+    "question_id": "P29",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "VCB",
+        "period": "TTM@2024-12-31",
+        "metric": "roe_total",
+        "unit": "pct",
+        "value": 18.74015281,
+        "display_value": "18.7402",
+        "operation": "roe_ttm_pct",
+        "formula": "a / ((b + c) / 2) * 100",
+        "source_cell_ids": [
+          "VCB_pat",
+          "VCB_eq0",
+          "VCB_eq1"
+        ],
+        "operands": [
+          {
+            "id": "VCB_pat",
+            "value": "33853117",
+            "unit": "million_VND"
+          },
+          {
+            "id": "VCB_eq0",
+            "value": "165080490",
+            "unit": "million_VND"
+          },
+          {
+            "id": "VCB_eq1",
+            "value": "196209168",
+            "unit": "million_VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      },
+      {
+        "ticker": "CTG",
+        "period": "TTM@2024-12-31",
+        "metric": "roe_total",
+        "unit": "pct",
+        "value": 18.47246924,
+        "display_value": "18.4725",
+        "operation": "roe_ttm_pct",
+        "formula": "a / ((b + c) / 2) * 100",
+        "source_cell_ids": [
+          "CTG_pat",
+          "CTG_eq0",
+          "CTG_eq1"
+        ],
+        "operands": [
+          {
+            "id": "CTG_pat",
+            "value": "25475009",
+            "unit": "million_VND"
+          },
+          {
+            "id": "CTG_eq0",
+            "value": "125871820",
+            "unit": "million_VND"
+          },
+          {
+            "id": "CTG_eq1",
+            "value": "149944138",
+            "unit": "million_VND"
+          }
+        ],
+        "absolute_tolerance": 0.0001
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  },
+  {
+    "question_id": "P30",
+    "expected_action": "answer",
+    "rows": [
+      {
+        "ticker": "HPG",
+        "period": "9M2024",
+        "metric": "net_revenue",
+        "unit": "VND",
+        "value": 104364829505198,
+        "display_value": "104364829505198",
+        "operation": "subtract",
+        "formula": "a - b",
+        "source_cell_ids": [
+          "HPG_fy24",
+          "HPG_q24"
+        ],
+        "operands": [
+          {
+            "id": "HPG_fy24",
+            "value": "138855112131887",
+            "unit": "VND"
+          },
+          {
+            "id": "HPG_q24",
+            "value": "34490282626689",
+            "unit": "VND"
+          }
+        ],
+        "absolute_tolerance": 1
+      }
+    ],
+    "required_warning": null,
+    "clarification": null,
+    "allowed_assumptions": [],
+    "provenance_status": "assistant_prepared_pending_human_review",
+    "independent_human_reviewer": null
+  }
+]
