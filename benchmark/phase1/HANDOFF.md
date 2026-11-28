@@ -1,5 +1,7 @@
 # Bàn giao giai đoạn 1 — Hiền (TV4)
 
+**Xác nhận mới ngày 28/11/2026:** Hiền đã duyệt toàn bộ kết quả kiểm chứng của trợ lý cho 30 câu và đồng ý bàn giao. Xem [xác nhận của Hiền](HIEN_APPROVAL.md). Các phiếu đã ghi `hien_approved_assistant_verification`; không ghi Hiền đã tự tính tay. Kiểm tra độc lập TV5 và cổng nghiệm thu nhóm vẫn chưa hoàn tất. Nội dung “chưa xác nhận” trong lần rà soát bên dưới là trạng thái trước khi Hiền duyệt.
+
 **Rà soát branch ngày 28/11/2026:** Bộ hồ sơ sẵn sàng đưa lên `main` để bàn giao, nhưng chưa hoàn thành nghiệm thu giai đoạn 1. Chạy lại `audit.mjs` và `validate.mjs --require-pdfs` đều đạt; `validate.mjs --gate` vẫn báo 30 phiếu Hiền chưa xác nhận và 0 mẫu TV5. Việc đưa lên `main` không đồng nghĩa đóng cổng giai đoạn. Các tài liệu tham chiếu vẫn chỉ có mẫu câu ViFinQA; cần bổ sung bằng chứng từ hai nguồn còn lại theo phạm vi nhóm thống nhất.
 
 **Cập nhật 23/11/2026:** Đã kiểm chứng lại bằng trợ lý theo yêu cầu Hiền: 27/27 ô nguồn và 26 dòng số khớp, 30 hành động/kết quả phù hợp quy ước. Xem [biên bản kiểm chứng](VERIFICATION.md) và `assistant_audit.json`. Không thay chữ ký kiểm tra độc lập của TV5.

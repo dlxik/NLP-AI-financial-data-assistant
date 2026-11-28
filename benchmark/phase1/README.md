@@ -1,5 +1,7 @@
 # Giai đoạn 1 của Hiền — TV4
 
+**Trạng thái mới nhất:** [Hiền đã duyệt kết quả kiểm chứng qua trợ lý ngày 28/11/2026](HIEN_APPROVAL.md) cho 30 câu. Phần kiểm tra tự tay của Hiền và kiểm tra độc lập TV5 không được ghi nhận thay bằng việc duyệt này.
+
 Ngày chuẩn bị: 22–23/11/2026. Vai trò và 5 mã đã được Hiền xác nhận trong phiên làm việc.
 
 **Đã có bộ hồ sơ pilot để kiểm tra/bàn giao. Chưa phải Gold do con người tính độc lập và chưa nghiệm thu cổng giai đoạn 1.** Trợ lý chép ô số từ ảnh báo cáo và tính số học trong chương trình riêng; không dùng code TV2. Theo kế hoạch, Hiền vẫn cần tự tính lại, TV5 lấy mẫu kiểm tra độc lập. Không ký thay hai bước này.

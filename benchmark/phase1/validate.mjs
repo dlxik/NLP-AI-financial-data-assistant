@@ -39,6 +39,14 @@ assert.equal(reviews.length,30);
 console.log(`PASS: 30 questions; ${c.length} cells; ${checkedRows} result/comparison rows; ${p.length} discriminating pairs; ${localPdfs}/5 local PDF hashes.`);
 console.log('This checks TV4 package consistency only, not TV5 scoring or independent human verification.');
 if(process.argv.includes('--gate')){
+ const approved=reviews.filter(r=>r.hien_approved_assistant_verification===true);
+ for(const r of approved){
+  assert.equal(r.approval_method,'user_acceptance_of_assistant_verification');
+  assert(r.approved_at && r.approval_evidence==='HIEN_APPROVAL.md');
+  assert.equal(r.approval_hash_method,'sha256_json_stringify');
+  for(const [name,digest] of Object.entries(r.approved_artifact_sha256))assert.equal(createHash('sha256').update(JSON.stringify(read(name))).digest('hex'),digest,`Approval stale: ${name}`);
+ }
+ console.log(`Hiền approved assistant verification: ${approved.length}/30. This is separate from self-recalculation and TV5 review.`);
  const pending=reviews.filter(r=>!r.hien_checked_source||!r.hien_recalculated||!r.reviewer||!r.reviewed_at);
  const audited=reviews.filter(r=>r.tv5_sampled);
  if(pending.length||!audited.length||audited.some(r=>r.tv5_result!=='pass')){console.error(`GATE NOT APPROVED: ${pending.length} pending Hiền reviews; ${audited.length} TV5 sampled records. See HANDOFF.md for other team gate conditions.`);process.exitCode=2;}

@@ -3,12 +3,12 @@
   "reviewer": "Codex assistant (same conversation; not independent human TV5)",
   "calculation": "BigInt exact rational; half-up to 8 decimals, display to 4",
   "artifact_sha256": {
-    "source_cells.json": "4ad27babbc0256cd9e7c16a7c81d766ca514f99dd460c2119d3adcb8a68749db",
-    "pilot_questions.json": "4fbbb8e75672d86240f9ffc3486a03998917e8851f1316b6b8b7cf0fae95da0e",
-    "pilot_gold.json": "1872879008e4e1d629d86546834c5a4ef8c5b1beb4981a1240388b213ced5f91",
-    "contrast_pairs.json": "deed1ad73ecadcb13fe3852d4042547dda1a768bbe4142ed9559a0f0eaa8a928",
-    "input_fixtures.json": "78e25c626b136e2a7122588994cfd3e19a2d0df2b35cf1b91111c58364bf0bef",
-    "sources/manifest.json": "41e2b7e07ca3ac69f2b561d7384e422ddebe07eb4023478464b0a98ea0ac912d"
+    "source_cells.json": "a143afa02e198e2523baff86bded50a89df1a51aa3ab81615cba13f7151c56a8",
+    "pilot_questions.json": "9d0572a7d3c8d12b02b46cac107246ff13e76544d20d4790f98ae04a4f30fd3d",
+    "pilot_gold.json": "113d4e261c1280904bbec5863b9155b51f7cb1a40235b7ff698beaeb4c3b4e04",
+    "contrast_pairs.json": "a8e51ca3b7f4acc6dc021d567d5ab51107ce044f69c529c98980abf1c41ce7d5",
+    "input_fixtures.json": "019eaa91ef2c645b29287a9f4f1abcd8df446f7534645b8f160451fb018f9a22",
+    "sources/manifest.json": "b3f35bba1fdd450dd4a8b7ef1e755bbea5c776b5b4ca591a418058c3da095374"
   },
   "pdf_sha256": {
     "HPG_Q4": "ea32528aa5b353b4d93b261596e03fe0be5bff36ebc4e708d51a456abc3b2af7",
