@@ -4,24 +4,21 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-import sys
 import tempfile
 
 import pandas as pd
 import pytest
 
-ROOT = Path(__file__).resolve().parents[1]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
+ROOT = Path(__file__).resolve().parents[2]
 
-from src.etl.pdf_manifest import generate_pilot_pdf_manifest
-from src.etl.pilot_etl import (
+from fin_assistant.etl.pdf_manifest import generate_pilot_pdf_manifest
+from fin_assistant.etl.pilot_etl import (
     derive_single_quarter_from_ytd,
     export_snapshot,
     get_pilot_tickers,
     load_vn30_reference,
 )
-from src.etl.schema import (
+from fin_assistant.etl.schema import (
     FACT_FINANCIALS_COLUMNS,
     FactFinancialRecord,
     records_to_dataframe,

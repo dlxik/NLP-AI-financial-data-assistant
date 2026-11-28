@@ -3,7 +3,7 @@
 - **Người thực hiện:** Chi (TV1 — Data & ETL Engineer)
 - **Ngày chốt danh mục (Freeze Date):** `2026-11-27`
 - **Cơ sở rà soát:** Danh mục thành phần chỉ số VN30 do HOSE công bố tại kỳ rà soát tháng 7/2026 (có hiệu lực từ ngày `2026-08-03`, bổ sung `MCH`, `TCX`; loại `TPB`, `PLX`; trước đó tháng 5/2026 bổ sung `BSR` thay `DGC` và tháng 2/2026 bổ sung `VPL` thay `BCM`).
-- **Tệp dữ liệu cấu trúc:** [`vn30_constituents_2026-11-27.csv`](file:///d:/NLP/NLP-AI-financial-data-assistant/data/reference/vn30_constituents_2026-11-27.csv)
+- **Tệp dữ liệu cấu trúc:** [`vn30_constituents_2026-11-27.csv`](../../data/reference/vn30_constituents_2026-11-27.csv)
 
 ---
 

@@ -2,6 +2,8 @@
 
 Trợ lý hỏi đáp số liệu BCTC nhóm **VN30** bằng tiếng Việt. Dự án so sánh có kiểm soát 4 phương pháp:
 
+Repo hiện gồm mã nền và pilot Giai đoạn 1. B0/semantic đã có thêm phần Giai đoạn 2 trên nhánh TV2; A, B, C và demo chưa có bản chạy hoàn chỉnh. [Kế hoạch 4 giai đoạn](kehoach.md).
+
 | Mã | Phương pháp |
 |---|---|
 | **B0** | Quy tắc / template, không dùng LLM |
@@ -9,7 +11,7 @@ Trợ lý hỏi đáp số liệu BCTC nhóm **VN30** bằng tiếng Việt. D�
 | **B** | LLM sinh code gọi thư viện chỉ số (semantic layer) |
 | **C** | LLM sinh truy vấn JSON, chạy bằng bộ thực thi giới hạn |
 
-Kết quả được đánh giá bằng 4 đại lượng: tỷ lệ trả lời, tỷ lệ sai trong câu đã trả lời, tỷ lệ đúng toàn tập và tỷ lệ lỗi âm thầm. Kế hoạch chi tiết: [kehoach.md](kehoach.md).
+Kết quả dự kiến được đánh giá bằng 4 đại lượng: tỷ lệ trả lời, tỷ lệ sai trong câu đã trả lời, tỷ lệ đúng toàn tập và tỷ lệ lỗi âm thầm.
 
 ## Cấu trúc thư mục
 
@@ -18,23 +20,21 @@ Kết quả được đánh giá bằng 4 đại lượng: tỷ lệ trả lời
 ├── kehoach.md                      Kế hoạch 4 giai đoạn, 5 thành viên
 ├── pyproject.toml                  Gói Python `fin-assistant` (src layout)
 ├── docs/
-│   ├── research/
-│   │   └── tong-quan-tai-lieu.md   Công trình liên quan, chuẩn mực BCTC VN, khoảng trống nghiên cứu
-│   ├── specs/
-│   │   ├── dac-ta-quy-tac-so-lieu-va-thoi-gian.md   Đặc tả quy tắc 4.3 (số liệu khó) & 4.4 (thời gian) — v1.0
-│   │   ├── danh-muc-chi-so-de-xuat.md               14 chỉ số chính thức, tách 3 lớp — v1.0
-│   │   └── b0-dac-ta.md                             Đặc tả phương pháp B0 (không LLM)
-│   └── reports/
-│       └── coverage-semantic-b0-v1.0.md             Báo cáo coverage unit test
+│   ├── data/          TV1: schema, danh sách VN30, nguồn dữ liệu
+│   ├── research/      Tài liệu liên quan
+│   ├── specs/         Quy tắc số liệu, B0, output contract và bộ chấm
+│   ├── qa/            Quy trình kiểm toán 100 giá trị
+│   └── reports/       Báo cáo tiến độ, coverage và kiểm tra tích hợp
 ├── src/fin_assistant/
 │   ├── semantic/      TV2: Semantic Layer v1.0 (get_metric, get_metric_multi, rank, screen, Query/execute)
 │   ├── b0/            TV2: phương pháp B0 — phân tích câu tiếng Việt bằng quy tắc → Query → semantic layer
-│   ├── etl/           TV1: nạp & chuẩn hóa fact_financials, Snapshot
-│   ├── pipelines/     TV3: pipeline LLM A/B/B1/D, sandbox, demo
-│   └── evaluation/    TV5: bộ chấm, thống kê
-├── tests/            Unit test semantic/ và b0/ (dữ liệu giả lập; 341 test, coverage 100% dòng + nhánh)
-├── data/              Dữ liệu (không commit dữ liệu thô / Snapshot)
-├── benchmark/dev/     Tập Dev công khai (tập Test niêm phong KHÔNG nằm trong repo)
+│   ├── etl/           TV1: schema, quy đổi YTD→Q và manifest pilot
+│   ├── pipelines/     TV3: runner, output contract, cấu hình và sandbox pilot
+│   └── evaluation/    TV5: bộ chấm v1
+├── tests/             Test theo từng phân hệ: etl, semantic, b0, pipelines, evaluation
+├── data/reference/    Danh mục và manifest TV1; dữ liệu thô/Snapshot giữ ngoài Git
+├── benchmark/phase1/ Bộ 30 câu pilot TV4; Test chính giữ ngoài repo
+├── evaluation/        Fixture tấn công bộ chấm và mẫu kiểm toán
 ├── configs/           Cấu hình đóng băng (RuleConfig, cấu hình LLM)
 ├── scripts/           Script chạy batch / tái lập kết quả
 └── notebooks/         Khám phá dữ liệu
@@ -43,10 +43,9 @@ Kết quả được đánh giá bằng 4 đại lượng: tỷ lệ trả lời
 ## Cài đặt & chạy test
 
 ```bash
-python -m venv .venv && .venv/Scripts/activate      # Linux/macOS: source .venv/bin/activate
-pip install -e ".[dev]"
-pytest                                               # toàn bộ test
-pytest --cov --cov-report=term-missing               # kèm coverage (ngưỡng tối thiểu 95%, cấu hình trong pyproject.toml)
+python -m pip install -e ".[dev]"
+python -m pytest
+node benchmark/phase1/validate.mjs                  # Node.js 18+, kiểm tra cấu trúc pilot TV4
 ```
 
 ## Ví dụ dùng thư viện chỉ số
@@ -101,6 +100,8 @@ ans.to_dict()       # JSON cho output contract / bộ chấm
 - [Bản đọc câu hỏi và lời giải](benchmark/phase1/PILOT_VA_GOLD.md)
 
 Gold pilot được trợ lý hỗ trợ chép và tính từ báo cáo gốc; Hiền đã duyệt kết quả kiểm chứng của trợ lý. Bước TV5 kiểm tra độc lập và nghiệm thu cổng giai đoạn vẫn còn chờ. Các PDF nguồn không nằm trong Git; URL và SHA256 được ghi trong manifest.
+
+Pilot TV4 dùng `FPT`, `HPG`, `VNM`, `VCB`, `CTG`; danh sách pilot TV1 dùng `FPT`, `HPG`, `MWG`, `VCB`, `TCB`. Quyết định bộ mã pilot chung và ánh xạ schema dữ liệu/Gold cần được chốt trước khi chạy đánh giá thật. Xem [báo cáo tích hợp](docs/reports/integration-review.md).
 
 ## Bộ chấm TV5
 

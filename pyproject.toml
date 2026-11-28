@@ -13,6 +13,10 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+etl = [
+    "requests>=2.31",
+    "pyarrow>=16.0",
+]
 dev = [
     "pytest>=7.0",
     "pytest-cov>=4.0",
