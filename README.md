@@ -20,15 +20,19 @@ Kết quả được đánh giá bằng 4 đại lượng: tỷ lệ trả lời
 ├── docs/
 │   ├── research/
 │   │   └── tong-quan-tai-lieu.md   Công trình liên quan, chuẩn mực BCTC VN, khoảng trống nghiên cứu
-│   └── specs/
-│       ├── dac-ta-quy-tac-so-lieu-va-thoi-gian.md   Đặc tả quy tắc 4.3 (số liệu khó) & 4.4 (thời gian)
-│       └── danh-muc-chi-so-de-xuat.md               14 chỉ số đề xuất cho GĐ2, tách 3 lớp
+│   ├── specs/
+│   │   ├── dac-ta-quy-tac-so-lieu-va-thoi-gian.md   Đặc tả quy tắc 4.3 (số liệu khó) & 4.4 (thời gian) — v1.0
+│   │   ├── danh-muc-chi-so-de-xuat.md               14 chỉ số chính thức, tách 3 lớp — v1.0
+│   │   └── b0-dac-ta.md                             Đặc tả phương pháp B0 (không LLM)
+│   └── reports/
+│       └── coverage-semantic-b0-v1.0.md             Báo cáo coverage unit test
 ├── src/fin_assistant/
-│   ├── semantic/      TV2: thư viện chỉ số (get_metric, get_metric_multi, screen)
+│   ├── semantic/      TV2: Semantic Layer v1.0 (get_metric, get_metric_multi, rank, screen, Query/execute)
+│   ├── b0/            TV2: phương pháp B0 — phân tích câu tiếng Việt bằng quy tắc → Query → semantic layer
 │   ├── etl/           TV1: nạp & chuẩn hóa fact_financials, Snapshot
 │   ├── pipelines/     TV3: pipeline LLM A/B/B1/D, sandbox, demo
 │   └── evaluation/    TV5: bộ chấm, thống kê
-├── tests/semantic/    Unit test thư viện chỉ số (dữ liệu giả lập)
+├── tests/            Unit test semantic/ và b0/ (dữ liệu giả lập; 341 test, coverage 100% dòng + nhánh)
 ├── data/              Dữ liệu (không commit dữ liệu thô / Snapshot)
 ├── benchmark/dev/     Tập Dev công khai (tập Test niêm phong KHÔNG nằm trong repo)
 ├── configs/           Cấu hình đóng băng (RuleConfig, cấu hình LLM)
@@ -39,14 +43,16 @@ Kết quả được đánh giá bằng 4 đại lượng: tỷ lệ trả lời
 ## Cài đặt & chạy test
 
 ```bash
+python -m venv .venv && .venv/Scripts/activate      # Linux/macOS: source .venv/bin/activate
 pip install -e ".[dev]"
-pytest
+pytest                                               # toàn bộ test
+pytest --cov --cov-report=term-missing               # kèm coverage (ngưỡng tối thiểu 95%, cấu hình trong pyproject.toml)
 ```
 
 ## Ví dụ dùng thư viện chỉ số
 
 ```python
-from fin_assistant.semantic import FactStore, get_metric, describe
+from fin_assistant.semantic import FactStore, get_metric, rank, describe
 
 store = FactStore(facts_df, companies_df)  # facts_df theo hợp đồng dữ liệu (đặc tả, mục 2)
 
@@ -58,6 +64,25 @@ describe(r) # "Tăng trưởng doanh thu thuần so với cùng kỳ Q3/2024 c�
 
 get_metric(store, "net_revenue", "NHA", "latest")  # ngân hàng → NEEDS_CLARIFICATION, không tự thay bằng NII
 get_metric(store, "roe_ttm", "DDD", "2024Q3")      # vốn chủ âm → NOT_MEANINGFUL
+get_metric(store, "net_revenue", "AAA", "2024Q3", transform="ytd_yoy")  # lũy kế 9 tháng so với cùng kỳ
+get_metric(store, "gross_margin", "AAA", "2024Q3", transform="yoy_pp")  # thay đổi biên LN gộp, điểm %
+rank(store, "roe_ttm", store.tickers(), "latest", top_n=5, as_of="2025-02-15")
+```
+
+Phép biến đổi: `[ytd|ttm][_][yoy|qoq][_pp]` — xem R14 trong [đặc tả](docs/specs/dac-ta-quy-tac-so-lieu-va-thoi-gian.md).
+
+## Ví dụ dùng B0
+
+```python
+from fin_assistant.b0 import B0System
+
+b0 = B0System(store)                      # policy="clarify" để hỏi lại khi câu mơ hồ (RQ3)
+ans = b0.answer("Doanh thu 9 tháng đầu năm 2024 của VNM tăng bao nhiêu so với cùng kỳ?", "2024-11-15")
+ans.status          # Status.OK
+ans.interpretation  # "Chỉ số: … · Đối tượng: VNM · Kỳ: 2024Q3 (tính tới ngày hỏi 2024-11-15)"
+ans.query.to_json() # truy vấn có cấu trúc — cùng định dạng phương pháp C sẽ dùng
+ans.text            # câu trả lời có kỳ cạnh số + giả định + lời miễn trừ
+ans.to_dict()       # JSON cho output contract / bộ chấm
 ```
 
 ## Phân công
@@ -65,7 +90,7 @@ get_metric(store, "roe_ttm", "DDD", "2024Q3")      # vốn chủ âm → NOT_MEA
 | Mã | Vai trò | Thư mục chính |
 |---|---|---|
 | TV1 | Data & ETL | `src/fin_assistant/etl`, `data/` |
-| TV2 | Semantic Layer & B0/C | `src/fin_assistant/semantic`, `docs/specs/` |
+| TV2 | Semantic Layer & B0/C | `src/fin_assistant/semantic`, `src/fin_assistant/b0`, `docs/specs/` |
 | TV3 | LLM Pipeline, Sandbox & Demo | `src/fin_assistant/pipelines` |
 | TV4 | Benchmark & Test Keeper | `benchmark/` (Test giữ ngoài repo) |
 | TV5 | Evaluation, QA & Statistics | `src/fin_assistant/evaluation` |

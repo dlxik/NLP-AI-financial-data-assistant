@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Phiên bản** | v0.1 — bản đề xuất, chờ chốt tại Cổng Giai đoạn 1 |
+| **Phiên bản** | v1.0 — tích hợp đầy đủ vào Semantic Layer v1.0 (GĐ2). Thay đổi so với v0.1: R6 áp dụng cho mọi mẫu số bình quân; thêm R12 (xếp hạng), R13 (lan truyền trạng thái khi so sánh), R14 (ràng buộc kiểu phép biến đổi); T6–T7 đã cài đặt |
 | **Người phụ trách** | TV2 (Semantic Layer & B0/C) |
 | **Cài đặt tham chiếu** | [`src/fin_assistant/semantic/`](../../src/fin_assistant/semantic/) — mọi quy tắc dưới đây đều có unit test trong [`tests/semantic/`](../../tests/semantic/) |
 | **Người dùng tài liệu** | TV1 (hợp đồng dữ liệu, mục 2), TV3 (output contract, mục 3), TV4 (hành động kỳ vọng khi viết câu hỏi, mục 3–5), TV5 (nhãn hành động & cảnh báo cụ thể, mục 3) |
@@ -130,9 +130,10 @@ VCSH bình quân (tùy chọn, 5 điểm) = trung bình VCSH cuối các quý t�
 - **Vì sao mặc định 2 điểm:** khớp với cách tính trên BCTC năm (bình quân đầu kỳ/cuối kỳ), chỉ cần 2 ô số nên ít rủi ro thiếu dữ liệu, và dễ để TV4 tính tay Gold. Bản 5 điểm được giữ để đối chiếu với nguồn dữ liệu thương mại.
 - **Áp dụng cho cả ngân hàng:** cùng công thức, cùng mã chuẩn hóa (`IS.NPAT_PARENT`, `BS.EQUITY_PARENT`).
 
-### R6 — Thiếu VCSH đầu kỳ
-- **Mặc định:** `missing_data`. Cảnh báo `missing_input` nêu `BS.EQUITY_PARENT` và kỳ thiếu, ví dụ Q3/2023.
-- **Tùy chọn** `allow_ending_equity_fallback = True`: dùng **VCSH cuối kỳ** thay cho bình quân, trả `ok` kèm `fallback_ending_equity`, và `details.equity_avg_method = "ending_only"`.
+### R6 — Thiếu số dư đầu kỳ (VCSH, tổng tài sản)
+- Áp dụng cho mọi mẫu số bình quân: VCSH cổ đông mẹ (ROE) và tổng tài sản (ROA).
+- **Mặc định:** `missing_data`. Cảnh báo `missing_input` nêu trường thiếu (`BS.EQUITY_PARENT`, `BS.TOTAL_ASSETS`) và kỳ thiếu, ví dụ Q3/2023.
+- **Tùy chọn** `allow_ending_equity_fallback = True`: dùng **số cuối kỳ** thay cho bình quân, trả `ok` kèm `fallback_ending_equity`, và `details.avg_method = "ending_only"`.
 - **Đề xuất cho thí nghiệm chính: giữ mặc định (tắt).** Fallback làm thay đổi định nghĩa chỉ số. Nếu bật, Gold của TV4 phải dùng cùng quy ước.
 
 ### R7 — Thiếu quý trong cửa sổ TTM
@@ -169,9 +170,37 @@ Phép lọc `screen(metric, tickers, op, threshold)`, với `op` thuộc `>`, `>
 
 ### R11 — Đơn vị, dạng số, làm tròn
 - **Lưu trữ:** tiền tệ tính bằng **đồng** (float64). Tỷ lệ lưu ở dạng **phân số** (`0.25`), `unit = "ratio"`.
-- **Phân biệt hai đơn vị:** **% tăng trưởng** (`ratio`, ví dụ +25%) khác với **chênh lệch điểm phần trăm** (`pp`, ví dụ biên LN tăng 1,2 điểm %). Đơn vị `pp` dành cho phép biến đổi ở giai đoạn 2.
+- **Phân biệt hai đơn vị:** **% tăng trưởng** (`ratio`, ví dụ +25%) khác với **chênh lệch điểm phần trăm** (`pp`, ví dụ biên LN tăng 1,2 điểm %). Ràng buộc kiểu ở R14 bảo đảm không thể tính nhầm loại này thành loại kia.
+- Hệ số nợ phải trả / VCSH dùng đơn vị `times` (lần).
 - **Hiển thị** ([fmt.py](../../src/fin_assistant/semantic/fmt.py)): tiền tệ ở đơn vị tỷ đồng, 1 chữ số thập phân; tỷ lệ 2 chữ số thập phân; dấu chấm phân tách nghìn, dấu phẩy thập phân. **Chỉ làm tròn khi hiển thị**, không làm tròn trong tính toán.
 - **Gợi ý dung sai chấm cho TV5:** sai lệch tương đối ≤ 0,5% với tiền tệ; ≤ 0,05 điểm % với tỷ lệ. TV5 chốt con số cuối cùng.
+
+### R12 — Xếp hạng
+- `rank(metric, tickers, period, order, top_n)` chỉ xếp các dòng `ok`, **trên cùng một kỳ** (T5).
+- Mã có chỉ số không xác định hoặc không áp dụng bị loại và được liệt kê (`excluded_not_meaningful`). Ví dụ: mã vốn chủ âm không bao giờ xuất hiện trong "ROE cao nhất".
+- Có mã **thiếu dữ liệu** thì vẫn xếp phần còn lại nhưng gắn `partial_coverage` nêu tên mã: kết quả "cao nhất" có thể đổi nếu mã đó có dữ liệu.
+- Hai mã bằng nhau giữ thứ tự theo mã cổ phiếu (ổn định, tái lập được). Mỗi dòng có `details.rank`.
+- Có mã cần làm rõ (R9) → `needs_clarification`. Không mã nào xếp được → trạng thái theo thứ tự ưu tiên: cần làm rõ > thiếu dữ liệu > không xác định > không áp dụng.
+
+### R13 — Lan truyền trạng thái khi so sánh hai kỳ
+- Với YoY, QoQ, điểm %: nếu **một trong hai đầu** là `not_meaningful` thì kết quả là `not_meaningful`, kể cả khi đầu kia thiếu dữ liệu. Có thêm dữ liệu cũng không làm phép so sánh có nghĩa.
+- Nếu không đầu nào `not_meaningful` nhưng có đầu thiếu dữ liệu thì trả `missing_data`.
+- Cả hai đầu `ok` thì áp R1–R3 cho tăng trưởng % (tiền tệ), hoặc lấy hiệu trực tiếp cho điểm % (tỷ lệ).
+
+### R14 — Ràng buộc kiểu giữa chỉ số và phép biến đổi
+Cú pháp phép biến đổi: `[ytd|ttm][_][yoy|qoq][_pp]`.
+
+| Loại chỉ số | Cửa sổ hợp lệ | So sánh hợp lệ |
+|---|---|---|
+| Tiền tệ flow (doanh thu, LN…) | quý, `ytd`, `ttm` | `yoy`, `qoq` → % tăng trưởng |
+| Tiền tệ stock (tài sản, nợ, VCSH) | chỉ quý (số cuối kỳ) | `yoy`, `qoq` → % tăng trưởng |
+| Tỷ lệ theo cửa sổ (biên LN) | quý, `ytd`, `ttm` (tỷ số của tổng, **không** phải trung bình các tỷ số) | **chỉ** `yoy_pp`, `qoq_pp` |
+| ROE, ROA (TTM cố định) | chỉ quý | **chỉ** `yoy_pp`, `qoq_pp` |
+| Nợ phải trả / VCSH (lần) | chỉ quý | chưa hỗ trợ ở v1.0 |
+
+Thêm hai ràng buộc:
+- Lũy kế chỉ so sánh với cùng kỳ năm trước (`ytd_qoq` không hợp lệ).
+- Vi phạm ràng buộc → `TransformError`. Bộ thực thi truy vấn chuyển lỗi này thành `QueryError`, và trường hợp đó được ghi nhận là "không biểu đạt được".
 
 ---
 
@@ -204,15 +233,19 @@ Thư viện chỉ "thấy" các dòng có `as_of_date ≤ as_of`. `as_of = None`
 ### T6 — Quý đơn lẻ và lũy kế
 - "Quý 3", "Q3" → quý đơn lẻ (`period_type = Q`). "9 tháng", "lũy kế", "từ đầu năm" → `YTD`.
 - Chuyển YTD sang quý (`Q_t = YTD_t − YTD_{t−1}`) chỉ áp dụng cho `flow` và do TV1 thực hiện trong ETL (ghi `derived_from`). Chỉ tiêu `stock` không có lũy kế.
-- Ở bản pilot, thư viện chỉ đọc `period_type = Q`. Phép biến đổi YTD sẽ thêm ở giai đoạn 2 cho cặp đối lập "Q3 vs lũy kế 9 tháng".
+- **Lũy kế (`ytd`):** ưu tiên dòng `period_type = YTD` do TV1 nạp **đúng như cột "Lũy kế từ đầu năm" trên B02a-DN**, để khớp với số mà TV4 đọc khi tính Gold. Nếu không có dòng này thì cộng các quý Q1..t (thiếu quý nào thì trả `missing_data`) và gắn `derived_value` (info).
+- **Cả năm** = `ytd` tại Q4.
+- Cặp đối lập "Q3 vs lũy kế 9 tháng" có test: `test_ytd_yoy_uses_reported_cumulative_columns`.
 
 ### T7 — Phép biến đổi theo thời gian
 | Phép | Định nghĩa | Trạng thái |
 |---|---|---|
-| YoY | so với **cùng quý năm trước** (t−4) | pilot |
-| QoQ | so với **quý liền trước** (t−1) | GĐ2 |
-| TTM | tổng 4 quý liên tiếp t−3..t (chỉ với `flow`) | pilot (trong ROE) |
-| YTD | tổng các quý từ Q1 đến t của cùng năm tài chính | GĐ2 |
+| YoY | so với **cùng quý năm trước** (t−4), cùng cửa sổ | ✅ v1.0 |
+| QoQ | so với **quý liền trước** (t−1) | ✅ v1.0 |
+| TTM | tổng 4 quý liên tiếp t−3..t (chỉ với `flow`) | ✅ v1.0 |
+| YTD | lũy kế Q1..t của cùng năm tài chính (T6) | ✅ v1.0 |
+| Điểm % | hiệu hai tỷ lệ (`yoy_pp`, `qoq_pp`) | ✅ v1.0 |
+| Xếp hạng / lọc | R12 / R8 | ✅ v1.0 |
 
 ### T8 — Năm tài chính
 Giả định năm tài chính trùng năm dương lịch với toàn bộ VN30 trong phạm vi. TV1 kiểm tra khi nạp dữ liệu. Nếu có ngoại lệ, mã đó được đánh dấu trong bảng công ty và loại khỏi các phép so sánh cùng kỳ đa mã cho tới khi có quy tắc riêng.
@@ -221,7 +254,7 @@ Giả định năm tài chính trùng năm dương lịch với toàn bộ VN30 
 
 ## 6. Thứ tự kiểm tra trong `get_metric`
 
-1. Chỉ số / phép biến đổi có trong danh mục không? Nếu không → `UnknownMetricError`.
+1. Chỉ số có trong danh mục không? Nếu không → `UnknownMetricError`. Phép biến đổi có hợp lệ với chỉ số không (R14)? Nếu không → `TransformError`.
 2. Mã có trong dữ liệu không? Nếu không → `not_applicable` (R10).
 3. Ngân hàng + `net_revenue`? → `needs_clarification` (R9).
 4. Chỉ số có áp dụng cho nhóm của mã không? Nếu không → `not_applicable` (R10).
@@ -281,4 +314,10 @@ Thứ tự này cố định để các phương pháp B0, B, C cho cùng một 
 | T1–T3 | `test_store.py::test_lookup_respects_as_of_and_picks_latest_version`, `TestNetRevenue::test_not_yet_published_differs_from_missing`, `…_quarter_not_ended_at_question_date`, `…_restated_base_is_used_and_disclosed` |
 | T4 | `test_store.py::test_latest_period_single_ticker`, `TestDispatch::test_latest_single_ticker_uses_question_date` |
 | T5 | `TestLatestMulti::*` |
-| T6 | `TestNetRevenue::test_derived_q4_is_disclosed` |
+| T6 | `TestNetRevenue::test_derived_q4_is_disclosed`, `TestWindows::*`, `test_ytd_yoy_uses_reported_cumulative_columns` |
+| T7 | `TestChanges::*`, `TestDerived::test_gross_margin_windows` |
+| R12 | `TestRank::*` |
+| R13 | `TestChanges::test_change_propagates_not_meaningful`, `…_roe_yoy_pp_needs_both_ends` |
+| R14 | `test_check_transform_type_rules`, `test_parse_transform_rejects` |
+
+Báo cáo coverage đầy đủ: [docs/reports/coverage-semantic-b0-v1.0.md](../reports/coverage-semantic-b0-v1.0.md).

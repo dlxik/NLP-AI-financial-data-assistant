@@ -11,6 +11,7 @@ import pytest
 from fin_assistant.semantic import (
     RuleConfig,
     Status,
+    TransformError,
     UnknownMetricError,
     WarnCode,
     describe,
@@ -104,8 +105,8 @@ class TestRoeTtm:
         # Σ LNST mẹ Q4/23..Q3/24 = 130+120+130+150 = 530 ; VCSH mẹ (5200 + 5600)/2 = 5400
         assert r.value == pytest.approx(530 / 5400)
         assert r.unit == "ratio"
-        assert r.details["npat_parent_ttm"] == pytest.approx(530e9)
-        assert r.details["equity_avg"] == pytest.approx(5400e9)
+        assert r.details["numerator_ttm"] == pytest.approx(530e9)
+        assert r.details["denominator_avg"] == pytest.approx(5400e9)
 
     def test_equity_parent_derived_from_total_minus_nci(self, store):
         r = get_metric(store, "roe_ttm", "AAA", "2024Q3")
@@ -117,7 +118,7 @@ class TestRoeTtm:
         r = get_metric(store, "roe_ttm", "AAA", "2024Q3", config=RuleConfig(equity_avg_method="five_point"))
         # VCSH mẹ Q3/23..Q3/24 = 5200, 5300, 5000, 5500, 5600 → bình quân 5320
         assert r.value == pytest.approx(530 / 5320)
-        assert len(r.details["equity_points"]) == 5
+        assert len(r.details["denominator_points"]) == 5
 
     def test_bank_two_point(self, store):
         r = get_metric(store, "roe_ttm", "NHA", "2024Q3")
@@ -167,7 +168,7 @@ class TestRoeTtm:
         assert r.value == pytest.approx((50 + 60 + 70 + 80) / 2000)
         assert WarnCode.FALLBACK_ENDING_EQUITY in r.warning_codes
         assert WarnCode.MISSING_INPUT not in r.warning_codes
-        assert r.details["equity_avg_method"] == "ending_only"
+        assert r.details["avg_method"] == "ending_only"
 
     def test_fallback_does_not_hide_missing_npat(self, store):
         cfg = RuleConfig(allow_ending_equity_fallback=True)
@@ -241,7 +242,7 @@ class TestDispatch:
     def test_unknown_metric_and_transform_raise(self, store):
         with pytest.raises(UnknownMetricError):
             get_metric(store, "ebitda", "AAA", "2024Q3")
-        with pytest.raises(UnknownMetricError):
+        with pytest.raises(TransformError, match="yoy_pp"):
             get_metric(store, "roe_ttm", "AAA", "2024Q3", transform="yoy")
 
     def test_latest_single_ticker_uses_question_date(self, store):

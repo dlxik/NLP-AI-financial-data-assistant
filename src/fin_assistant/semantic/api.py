@@ -1,7 +1,7 @@
-"""Giao diện công khai của semantic layer: ``get_metric``, ``get_metric_multi``, ``screen``.
+"""Giao diện công khai của semantic layer: ``get_metric``, ``get_metric_multi``, ``rank``, ``screen``.
 
 Đây là điểm gọi chung cho B0, phương pháp B (LLM sinh code gọi thư viện) và bộ thực thi C.
-Thứ tự kiểm tra trong ``get_metric`` là cố định (xem đặc tả mục 5):
+Thứ tự kiểm tra trong ``get_metric`` là cố định (đặc tả, mục 6):
 
 1. Mã chỉ số / phép biến đổi có trong danh mục không (lỗi lập trình → ngoại lệ).
 2. Mã cổ phiếu có trong phạm vi dữ liệu không → NOT_APPLICABLE.
@@ -13,11 +13,12 @@ Thứ tự kiểm tra trong ``get_metric`` là cố định (xem đặc tả m�
 
 from __future__ import annotations
 
+from dataclasses import replace
 from datetime import date
 from typing import Iterable, Sequence
 
-from .catalog import BANK, BANK_CLARIFY_METRICS, METRICS
-from .metrics import bank_revenue_clarification, base_value, roe_ttm, yoy
+from .catalog import BANK, BANK_CLARIFY_METRICS, GROUPS, METRICS, Transform, check_transform, parse_transform
+from .metrics import bank_revenue_clarification, compute
 from .periods import LATEST, Period, PeriodLike, to_date
 from .result import MetricResult, MetricWarning, MultiResult, Status, WarnCode
 from .rules import DEFAULT_RULES, SCREEN_OPS, RuleConfig, compare
@@ -25,17 +26,15 @@ from .store import FactStore
 
 
 class UnknownMetricError(KeyError):
-    """Chỉ số / phép biến đổi không có trong danh mục (bộ phân tích phải kiểm tra trước)."""
+    """Chỉ số không có trong danh mục (bộ phân tích phải kiểm tra trước)."""
 
 
-def _check_metric(metric: str, transform: str | None) -> None:
+def _check_metric(metric: str, transform: str | None) -> Transform:
     if metric not in METRICS:
         raise UnknownMetricError(f"chỉ số không có trong danh mục: {metric!r}; có: {sorted(METRICS)}")
-    if transform is not None and transform not in METRICS[metric].transforms:
-        raise UnknownMetricError(
-            f"phép biến đổi {transform!r} không áp dụng cho {metric!r}; "
-            f"hỗ trợ: {sorted(METRICS[metric].transforms) or 'không có'}"
-        )
+    t = parse_transform(transform)
+    check_transform(METRICS[metric], t)
+    return t
 
 
 def _simple(metric_id: str, ticker: str, status: Status, code: WarnCode, message: str,
@@ -65,15 +64,19 @@ def get_metric(
         metric: mã chỉ số trong :data:`catalog.METRICS` (vd ``"net_revenue"``, ``"roe_ttm"``).
         ticker: mã cổ phiếu.
         period: ``Period``, chuỗi ``"2024Q3"`` / ``"Q3/2024"``, hoặc ``"latest"``.
-        transform: ``None`` hoặc ``"yoy"``.
+        transform: phép biến đổi lớp 3, cú pháp ``[ytd|ttm][_][yoy|qoq][_pp]``
+            (vd ``"yoy"``, ``"ytd"``, ``"ttm_yoy"``, ``"yoy_pp"``); ``None`` = quý đơn lẻ.
         as_of: ngày hỏi (``question_date``); chỉ dùng số liệu đã công bố tới ngày này.
-            ``None`` = dùng toàn bộ snapshot.
         config: bộ ngưỡng quy tắc; mặc định :data:`rules.DEFAULT_RULES`.
+
+    Raises:
+        UnknownMetricError: chỉ số không có trong danh mục.
+        TransformError: phép biến đổi sai cú pháp / không áp dụng cho chỉ số.
     """
-    _check_metric(metric, transform)
+    t = _check_metric(metric, transform)
     config = config or DEFAULT_RULES
     mdef = METRICS[metric]
-    metric_id = f"{metric}_{transform}" if transform else metric
+    metric_id = f"{metric}_{t.name}" if t.name else metric
     ticker = ticker.upper()
     explicit = None if isinstance(period, str) and period == LATEST else Period.parse(period)
     explicit_label = explicit.label() if explicit else None
@@ -102,13 +105,7 @@ def get_metric(
                 f"{ticker}: chưa có BCTC nào được công bố tới ngày hỏi {to_date(as_of)}.",
             )
 
-    if metric == "roe_ttm":
-        result = roe_ttm(store, ticker, resolved, as_of, config)
-    elif transform == "yoy":
-        result = yoy(store, mdef, ticker, resolved, as_of, config)
-    else:
-        result = base_value(store, mdef, ticker, resolved, as_of)
-
+    result = compute(store, mdef, ticker, resolved, t, as_of, config)
     if explicit is None:
         result.details["period_resolved_from"] = LATEST
     return result
@@ -117,6 +114,19 @@ def get_metric(
 # ---------------------------------------------------------------------------
 # Nhiều mã
 # ---------------------------------------------------------------------------
+UNIVERSES = ("all", "vn30", BANK, "non_financial")
+
+
+def resolve_universe(store: FactStore, spec: str) -> list[str]:
+    """Nhóm mã: ``"all"``/``"vn30"`` = toàn bộ danh mục; ``"bank"``; ``"non_financial"``."""
+    spec = spec.lower()
+    if spec in ("all", "vn30"):
+        return store.tickers()
+    if spec in GROUPS:
+        return store.tickers(spec)
+    raise ValueError(f"nhóm mã không hợp lệ: {spec!r}; chỉ nhận {UNIVERSES}")
+
+
 _NO_ANSWER_PRIORITY = (
     Status.NEEDS_CLARIFICATION,
     Status.MISSING_DATA,
@@ -152,34 +162,34 @@ def get_metric_multi(
       kỳ mới hơn được gắn cảnh báo NEWER_PERIOD_AVAILABLE.
     - ``"per_ticker"``: mỗi mã lấy kỳ gần nhất của riêng nó; nếu các kỳ khác nhau → MIXED_PERIODS.
     """
-    _check_metric(metric, transform)
+    t = _check_metric(metric, transform)
     config = config or DEFAULT_RULES
-    metric_id = f"{metric}_{transform}" if transform else metric
+    metric_id = f"{metric}_{t.name}" if t.name else metric
     tickers = _dedupe(tickers)
     warnings: list[MetricWarning] = []
     is_latest = isinstance(period, str) and period == LATEST
     policy = config.latest_policy_multi if is_latest else "explicit"
 
-    per_ticker_period: dict[str, PeriodLike] = {t: period for t in tickers}
+    per_ticker_period: dict[str, PeriodLike] = {tk: period for tk in tickers}
     if is_latest and policy == "common":
-        latest = {t: store.latest_period(t, as_of) for t in tickers if store.has_ticker(t)}
+        latest = {tk: store.latest_period(tk, as_of) for tk in tickers if store.has_ticker(tk)}
         available = [p for p in latest.values() if p is not None]
         if available:
             common = min(available)
-            for t, p in latest.items():
+            for tk, p in latest.items():
                 if p is not None:
-                    per_ticker_period[t] = common
+                    per_ticker_period[tk] = common
                     if p > common:
                         warnings.append(MetricWarning(
                             code=WarnCode.NEWER_PERIOD_AVAILABLE,
-                            message=f"{t}: đã có BCTC {p.label()} nhưng bảng so sánh dùng kỳ chung "
+                            message=f"{tk}: đã có BCTC {p.label()} nhưng bảng so sánh dùng kỳ chung "
                                     f"gần nhất {common.label()} của các mã.",
-                            ticker=t, period=p.label(), severity="info",
+                            ticker=tk, period=p.label(), severity="info",
                         ))
 
     rows = tuple(
-        get_metric(store, metric, t, per_ticker_period[t], transform=transform, as_of=as_of, config=config)
-        for t in tickers
+        get_metric(store, metric, tk, per_ticker_period[tk], transform=transform, as_of=as_of, config=config)
+        for tk in tickers
     )
 
     if is_latest and policy == "per_ticker":
@@ -221,8 +231,77 @@ def _aggregate_status(rows: Sequence[MetricResult], warnings: list[MetricWarning
     return Status.MISSING_DATA  # danh sách mã rỗng
 
 
+def _exclusion_warnings(excluded: Sequence[MetricResult], base: Sequence[MetricWarning],
+                        action: str) -> tuple[list[MetricWarning], list[MetricResult], list[MetricResult]]:
+    """Cảnh báo cho mã bị loại khỏi phép lọc / xếp hạng: 'mềm' (không xác định, không áp dụng)
+    và 'cứng' (thiếu dữ liệu)."""
+    warnings = [w for w in base if w.code is not WarnCode.PARTIAL_COVERAGE]
+    soft = [r for r in excluded if r.status in (Status.NOT_MEANINGFUL, Status.NOT_APPLICABLE)]
+    hard = [r for r in excluded if r.status is Status.MISSING_DATA]
+    if soft:
+        warnings.append(MetricWarning(
+            code=WarnCode.EXCLUDED_NOT_MEANINGFUL,
+            message=f"Bị loại khỏi {action} vì chỉ số không xác định/không áp dụng: "
+                    + ", ".join(f"{r.ticker} ({r.status.value})" for r in soft) + ".",
+        ))
+    if hard:
+        warnings.append(MetricWarning(
+            code=WarnCode.PARTIAL_COVERAGE,
+            message=f"Không đánh giá được trong {action} do thiếu dữ liệu: "
+                    + ", ".join(r.ticker for r in hard) + ".",
+        ))
+    return warnings, soft, hard
+
+
 # ---------------------------------------------------------------------------
-# Lọc theo ngưỡng — quy tắc "0 dòng"
+# Xếp hạng (R12)
+# ---------------------------------------------------------------------------
+def rank(
+    store: FactStore,
+    metric: str,
+    tickers: Sequence[str],
+    period: PeriodLike = LATEST,
+    *,
+    transform: str | None = None,
+    order: str = "desc",
+    top_n: int | None = None,
+    as_of: date | str | None = None,
+    config: RuleConfig | None = None,
+) -> MultiResult:
+    """Xếp hạng các mã theo chỉ số, trên **cùng một kỳ** (T5).
+
+    - Chỉ dòng OK được xếp hạng; mã không xác định / không áp dụng bị loại và nêu rõ.
+    - Có mã thiếu dữ liệu → vẫn xếp hạng phần còn lại nhưng gắn PARTIAL_COVERAGE (kết quả
+      "cao nhất" có thể đổi nếu mã thiếu có dữ liệu).
+    - Bằng nhau → giữ thứ tự theo mã (ổn định, tái lập được).
+    """
+    if order not in ("desc", "asc"):
+        raise ValueError("order phải là 'desc' hoặc 'asc'")
+    if top_n is not None and top_n < 1:
+        raise ValueError("top_n phải ≥ 1")
+    multi = get_metric_multi(store, metric, tickers, period, transform=transform, as_of=as_of, config=config)
+    ok = sorted((r for r in multi.rows if r.status is Status.OK), key=lambda r: r.ticker)
+    ok.sort(key=lambda r: r.value, reverse=(order == "desc"))  # type: ignore[arg-type,return-value]
+    if top_n is not None:
+        ok = ok[:top_n]
+    ranked = tuple(replace(r, details={**r.details, "rank": i}) for i, r in enumerate(ok, start=1))
+    excluded = tuple(r for r in multi.rows if r.status is not Status.OK)
+    warnings, _, _ = _exclusion_warnings(excluded, multi.warnings, "xếp hạng")
+
+    if any(r.status is Status.NEEDS_CLARIFICATION for r in excluded):
+        status = Status.NEEDS_CLARIFICATION
+    elif ranked:
+        status = Status.OK
+    else:
+        status = next((s for s in _NO_ANSWER_PRIORITY if s in {r.status for r in excluded}), Status.MISSING_DATA)
+    return MultiResult(
+        metric=multi.metric, status=status, rows=ranked, period_policy=multi.period_policy,
+        warnings=tuple(warnings), excluded=excluded,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Lọc theo ngưỡng — quy tắc "0 dòng" (R8)
 # ---------------------------------------------------------------------------
 def screen(
     store: FactStore,
@@ -238,8 +317,6 @@ def screen(
 ) -> MultiResult:
     """Lọc các mã có ``chỉ số <op> threshold``.
 
-    Quy tắc 0 dòng (R8):
-
     - Có dòng thỏa → OK; mã không đánh giá được nằm trong ``excluded`` kèm cảnh báo.
     - Không dòng nào thỏa **và** mọi mã đều đánh giá được (hoặc chỉ bị loại vì chỉ số không
       xác định / không áp dụng — đã nêu rõ) → EMPTY_VALID (0 dòng hợp lệ).
@@ -252,23 +329,9 @@ def screen(
     multi = get_metric_multi(
         store, metric, tickers, period, transform=transform, as_of=as_of, config=config
     )
-    warnings = [w for w in multi.warnings if w.code is not WarnCode.PARTIAL_COVERAGE]
     matched = tuple(r for r in multi.rows if r.status is Status.OK and compare(r.value, op, threshold))  # type: ignore[arg-type]
     excluded = tuple(r for r in multi.rows if r.status is not Status.OK)
-
-    soft = [r for r in excluded if r.status in (Status.NOT_MEANINGFUL, Status.NOT_APPLICABLE)]
-    hard = [r for r in excluded if r.status is Status.MISSING_DATA]
-    if soft:
-        warnings.append(MetricWarning(
-            code=WarnCode.EXCLUDED_NOT_MEANINGFUL,
-            message="Bị loại khỏi phép lọc vì chỉ số không xác định/không áp dụng: "
-                    + ", ".join(f"{r.ticker} ({r.status.value})" for r in soft) + ".",
-        ))
-    if hard:
-        warnings.append(MetricWarning(
-            code=WarnCode.PARTIAL_COVERAGE,
-            message="Không đánh giá được do thiếu dữ liệu: " + ", ".join(r.ticker for r in hard) + ".",
-        ))
+    warnings, _, hard = _exclusion_warnings(excluded, multi.warnings, "phép lọc")
 
     if any(r.status is Status.NEEDS_CLARIFICATION for r in excluded):
         status = Status.NEEDS_CLARIFICATION

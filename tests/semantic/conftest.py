@@ -85,6 +85,13 @@ def build_rows() -> list[dict]:
     parent_eq = [5000, 5100, 5200, 5300, 5000, 5500, 5600, 5700]
     rows += series("AAA", "BS.EQUITY_TOTAL", [v + 200 for v in parent_eq])
     rows += series("AAA", "BS.NCI", [200] * 8)
+    rows += series("AAA", "IS.GROSS_PROFIT", [300, 330, 360, 390, 330, 363, 450, 429])
+    rows += series("AAA", "IS.NPAT", [110, 120, 130, 140, 130, 140, 160, 150])
+    rows += series("AAA", "BS.TOTAL_ASSETS", [10000, 10200, 10400, 10600, 10400, 11000, 11200, 11400])
+    rows += series("AAA", "BS.TOTAL_LIABILITIES", [4800, 4900, 5000, 5100, 5200, 5300, 5400, 5500])
+    # cột "Lũy kế từ đầu năm" công bố trên B02a-DN (Q3/2023: 1000+1100+1200; Q3/2024: 1100+1210+1500)
+    rows.append(fact("AAA", "2023Q3", "IS.NET_REVENUE", 3300, period_type="YTD"))
+    rows.append(fact("AAA", "2024Q3", "IS.NET_REVENUE", 3810, period_type="YTD"))
 
     # --- BBB: VCSH mẹ chuyển âm ở cuối kỳ -----------------------------------
     rows += series("BBB", "IS.NPAT_PARENT", [-50] * 8)
@@ -93,6 +100,8 @@ def build_rows() -> list[dict]:
     # --- DDD: VCSH âm cả hai đầu, lỗ → tỷ số dương giả --------------------------
     rows += series("DDD", "IS.NPAT_PARENT", [-50] * 8)
     rows += series("DDD", "BS.EQUITY_PARENT", [-400, -450, -500, -550, -600, -650, -700, -750])
+    rows += series("DDD", "BS.EQUITY_TOTAL", [-400, -450, -500, -550, -600, -650, -700, -750])
+    rows += series("DDD", "BS.TOTAL_LIABILITIES", [1000] * 8)
 
     # --- CCC: mẫu số kỳ gốc khó; thiếu LNST Q1/2024 ---------------------------
     #            23Q1  23Q2  23Q3  23Q4  24Q1  24Q2  24Q3  24Q4
@@ -115,11 +124,16 @@ def build_rows() -> list[dict]:
     rows += series("NHA", "IS.BANK_INTEREST_INCOME", [7500, 7800, 8200, 8600, 9000], bank_q)
     rows += series("NHA", "IS.NPAT_PARENT", [1900, 2000, 2100, 2200, 2300], bank_q)
     rows += series("NHA", "BS.EQUITY_PARENT", [50000, 52000, 54000, 57000, 60000], bank_q)
+    rows += series("NHA", "IS.NPAT", [1950, 2050, 2150, 2250, 2350], bank_q)
+    rows += series("NHA", "BS.TOTAL_ASSETS", [500000, 520000, 540000, 570000, 600000], bank_q)
     return rows
 
 
+ALIASES = {"AAA": "Alpha Corp;Tập đoàn Alpha", "NHA": "Ngân hàng Nam Hà;Nam Hà Bank"}
+
+
 def companies_df() -> pd.DataFrame:
-    return pd.DataFrame([{"ticker": t, "group": g} for t, g in COMPANIES])
+    return pd.DataFrame([{"ticker": t, "group": g, "aliases": ALIASES.get(t)} for t, g in COMPANIES])
 
 
 @pytest.fixture(scope="session")

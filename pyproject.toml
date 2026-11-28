@@ -23,5 +23,13 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "."]
 addopts = "-q"
+
+[tool.coverage.run]
+branch = true
+source = ["fin_assistant.semantic", "fin_assistant.b0"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 95

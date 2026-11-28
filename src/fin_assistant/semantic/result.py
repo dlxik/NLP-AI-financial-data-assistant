@@ -58,6 +58,10 @@ class WarnCode(str, Enum):
     MIXED_PERIODS = "mixed_periods"
     PARTIAL_COVERAGE = "partial_coverage"
     EXCLUDED_NOT_MEANINGFUL = "excluded_not_meaningful"
+    # lớp hiểu câu (B0 / C)
+    ASSUMPTION = "assumption"
+    AMBIGUOUS_QUESTION = "ambiguous_question"
+    UNSUPPORTED_QUERY = "unsupported_query"
 
 
 @dataclass(frozen=True)

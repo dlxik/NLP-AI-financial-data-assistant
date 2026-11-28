@@ -124,11 +124,17 @@ class FactStore:
 
         self._groups: dict[str, str] = {}
         self._scopes: dict[str, str] = {}
+        self._aliases: dict[str, str] = {}
         for rec in companies.to_dict("records"):
             ticker = str(rec["ticker"]).upper()
             self._groups[ticker] = rec["group"]
             scope = rec.get("scope")
             self._scopes[ticker] = scope if isinstance(scope, str) and scope else CONSOLIDATED
+            # tên gọi / bí danh (cột tùy chọn "name", "aliases" phân tách bằng ';') — dùng cho B0
+            for raw in (rec.get("name"), *str(rec.get("aliases") or "").split(";")):
+                alias = _none_if_blank(raw)
+                if alias and alias.lower() != "nan":
+                    self._aliases[alias.lower()] = ticker
 
         self._index: dict[tuple, list[Fact]] = defaultdict(list)
         # (ticker, scope, period) -> ngày công bố sớm nhất của bất kỳ dòng quý nào
@@ -220,6 +226,10 @@ class FactStore:
 
     def tickers(self, group: str | None = None) -> list[str]:
         return sorted(t for t, g in self._groups.items() if group is None or g == group)
+
+    def aliases(self) -> dict[str, str]:
+        """Bí danh viết thường → mã (vd ``"vinamilk" → "VNM"``)."""
+        return dict(self._aliases)
 
 
 def _as_bool(value: object) -> bool:
