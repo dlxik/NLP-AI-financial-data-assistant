@@ -1,5 +1,15 @@
-"""TV5 — Bộ chấm 4 đại lượng (A/N, W/A, (A−W)/N, lỗi âm thầm), tấn công bộ chấm, bootstrap theo họ câu.
+"""Bộ chấm độc lập cho benchmark Financial Data Assistant."""
 
-Nhãn hành động khớp ``fin_assistant.semantic.Status``; cảnh báo cụ thể khớp ``MetricWarning``
-(có ticker / period / item_code).
-"""
+from .models import CaseScore, GoldCase, GoldRow, ScoreSummary
+from .scorer import score_batch, score_case
+from .warnings import specific_warnings
+
+__all__ = [
+    "CaseScore",
+    "GoldCase",
+    "GoldRow",
+    "ScoreSummary",
+    "score_batch",
+    "score_case",
+    "specific_warnings",
+]

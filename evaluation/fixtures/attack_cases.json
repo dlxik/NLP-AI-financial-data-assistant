@@ -1,0 +1,130 @@
+{
+  "description": "Ca tấn công bắt buộc tại Phase Gate Giai đoạn 1. Mỗi attack phải bị Bộ chấm phát hiện.",
+  "attacks": [
+    {
+      "name": "swapped_period",
+      "gold": [
+        {
+          "question_id": "period_1",
+          "status": "ok",
+          "answer_type": "single",
+          "metric": "net_revenue",
+          "ticker": "FPT",
+          "period": "2025Q3",
+          "value": 100.0,
+          "unit": "VND"
+        }
+      ],
+      "predictions": [
+        {
+          "question_id": "period_1",
+          "status": "ok",
+          "answer_type": "single",
+          "metric": "net_revenue",
+          "ticker": "FPT",
+          "period": "2024Q3",
+          "value": 100.0,
+          "unit": "VND",
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "name": "swapped_ticker_values",
+      "gold": [
+        {
+          "question_id": "table_1",
+          "status": "ok",
+          "answer_type": "table",
+          "metric": "roe_ttm",
+          "rows": [
+            {"ticker": "FPT", "period": "2025Q3", "value": 0.20, "unit": "ratio"},
+            {"ticker": "HPG", "period": "2025Q3", "value": 0.10, "unit": "ratio"}
+          ]
+        }
+      ],
+      "predictions": [
+        {
+          "question_id": "table_1",
+          "status": "ok",
+          "answer_type": "table",
+          "metric": "roe_ttm",
+          "rows": [
+            {"ticker": "FPT", "period": "2025Q3", "status": "ok", "metric": "roe_ttm", "value": 0.10, "unit": "ratio"},
+            {"ticker": "HPG", "period": "2025Q3", "status": "ok", "metric": "roe_ttm", "value": 0.20, "unit": "ratio"}
+          ],
+          "warnings": []
+        }
+      ]
+    },
+    {
+      "name": "generic_warning_hides_error",
+      "gold": [
+        {
+          "question_id": "warning_1",
+          "status": "not_meaningful",
+          "answer_type": "action",
+          "metric": "roe_ttm",
+          "ticker": "AAA",
+          "period": "2025Q3",
+          "required_warning_codes": ["negative_equity"]
+        }
+      ],
+      "predictions": [
+        {
+          "question_id": "warning_1",
+          "status": "not_meaningful",
+          "answer_type": "action",
+          "metric": "roe_ttm",
+          "ticker": "AAA",
+          "period": "2025Q3",
+          "value": null,
+          "warnings": [
+            {"code": "negative_equity", "message": "Dữ liệu có vấn đề."}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "always_clarify",
+      "gold": [
+        {
+          "question_id": "clear_1",
+          "status": "ok",
+          "answer_type": "single",
+          "metric": "net_revenue",
+          "ticker": "FPT",
+          "period": "2025Q3",
+          "value": 100.0,
+          "unit": "VND"
+        },
+        {
+          "question_id": "ambiguous_1",
+          "status": "needs_clarification",
+          "answer_type": "action",
+          "metric": "net_revenue",
+          "ticker": "VCB",
+          "required_candidates": ["bank_nii", "bank_toi"]
+        }
+      ],
+      "predictions": [
+        {
+          "question_id": "clear_1",
+          "status": "needs_clarification",
+          "answer_type": "action",
+          "metric": "net_revenue",
+          "candidates": ["net_revenue"],
+          "warnings": []
+        },
+        {
+          "question_id": "ambiguous_1",
+          "status": "needs_clarification",
+          "answer_type": "action",
+          "metric": "net_revenue",
+          "candidates": ["bank_nii", "bank_toi"],
+          "warnings": []
+        }
+      ]
+    }
+  ]
+}

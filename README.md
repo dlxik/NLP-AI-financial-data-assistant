@@ -101,3 +101,7 @@ ans.to_dict()       # JSON cho output contract / bộ chấm
 - [Bản đọc câu hỏi và lời giải](benchmark/phase1/PILOT_VA_GOLD.md)
 
 Gold pilot được trợ lý hỗ trợ chép và tính từ báo cáo gốc; Hiền đã duyệt kết quả kiểm chứng của trợ lý. Bước TV5 kiểm tra độc lập và nghiệm thu cổng giai đoạn vẫn còn chờ. Các PDF nguồn không nằm trong Git; URL và SHA256 được ghi trong manifest.
+
+## Bộ chấm TV5
+
+Bộ chấm v1 xử lý câu đơn, bảng nhiều mã và hành động; có bộ ca tấn công tự động và quy trình kiểm toán 100 giá trị. Xem [đặc tả đánh giá](docs/specs/evaluation-v1.md) và [báo cáo Giai đoạn 1](docs/reports/linh_giai_doan_1.md).

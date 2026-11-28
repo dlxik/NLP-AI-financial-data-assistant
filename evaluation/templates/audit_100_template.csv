@@ -1,0 +1,1 @@
+sample_id,fact_id,ticker,entity_group,statement_type,item_code,fiscal_period,period_type,value_type,expected_value,observed_value,unit,source_report_id,source_ref,derived_from,absolute_error,relative_error,pass,error_class,auditor,evidence_note,checked_at
